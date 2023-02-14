@@ -5,6 +5,7 @@ using UnityEngine;
 public class IterationTrigger : MonoBehaviour
 {
     [SerializeField] private float _productionDelay;
+    [SerializeField] private Timer _timer;
 
     private Product _productOnIteration;
 
@@ -13,7 +14,9 @@ public class IterationTrigger : MonoBehaviour
         _productOnIteration.StopProductOnBelt();
         yield return new WaitForSeconds(_productionDelay);
         _productOnIteration.MoveProductOnBelt();
+        
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,6 +24,7 @@ public class IterationTrigger : MonoBehaviour
         { 
             _productOnIteration = product;  
             StartCoroutine(WaitforProductionDelay());
+            StartCoroutine(_timer.TimerAnimation(_productionDelay));
         }
     }
 }

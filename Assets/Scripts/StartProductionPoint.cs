@@ -7,6 +7,7 @@ public class StartProductionPoint : MonoBehaviour
     [SerializeField] private Product _productPrefab;
     [SerializeField] private Transform _startPoint;
     [SerializeField] private float _secondsBetweenSpawn;
+    [SerializeField] private Timer _timer;
 
     private StartProductionTrigger _startTrigger;
     private Product _currentSpawnProduct;
@@ -24,6 +25,7 @@ public class StartProductionPoint : MonoBehaviour
         {
             if (_startTrigger.CanSpawn)
             {
+                StartCoroutine(_timer.TimerAnimation(_secondsBetweenSpawn));
                 _previusSpawnProduct = _currentSpawnProduct;
                 _currentSpawnProduct = Instantiate(_productPrefab, _startPoint.position, Quaternion.identity);
                 _currentSpawnProduct.PreviusProductOnBelt = _previusSpawnProduct;
