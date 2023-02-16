@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SellBoxTrigger : MonoBehaviour
 {
+    [SerializeField] private ProductPool _productPool;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Product product = collision.attachedRigidbody.GetComponent<Product>();
@@ -11,7 +13,7 @@ public class SellBoxTrigger : MonoBehaviour
         if (product != null)
         {
             print("++");
-            Destroy(product.gameObject);
+            _productPool.Pool.DeactivateObject();
         }
     }
 }

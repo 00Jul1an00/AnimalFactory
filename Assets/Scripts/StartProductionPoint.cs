@@ -5,9 +5,9 @@ using UnityEngine;
 public class StartProductionPoint : MonoBehaviour
 {
     [SerializeField] private Product _productPrefab;
-    [SerializeField] private Transform _startPoint;
     [SerializeField] private float _secondsBetweenSpawn;
     [SerializeField] private Timer _timer;
+    [SerializeField] private ProductPool _productPool;
 
     private StartProductionTrigger _startTrigger;
     private Product _currentSpawnProduct;
@@ -27,7 +27,9 @@ public class StartProductionPoint : MonoBehaviour
             {
                 StartCoroutine(_timer.TimerAnimation(_secondsBetweenSpawn));
                 _previusSpawnProduct = _currentSpawnProduct;
-                _currentSpawnProduct = Instantiate(_productPrefab, _startPoint.position, Quaternion.identity);
+                int index = _productPool.Pool.LastActiveIndex;
+                _productPool.Pool.ActivateObject();
+                _currentSpawnProduct = _productPool.Pool.GetObjectFromPool(index);
                 _currentSpawnProduct.PreviusProductOnBelt = _previusSpawnProduct;
                 yield return new WaitForSeconds(_secondsBetweenSpawn);
             }
