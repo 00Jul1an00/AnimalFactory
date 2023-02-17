@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _productPrefab: {fileID: -1604093385589957806, guid: 474f915d27fbf73419e9cd276d4bb70e, type: 3}
-  _poolCapacity: 20
+  _poolCapacity: 10
 --- !u!1 &114637554 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2880585312703762944, guid: c565064ba225f3e4ba4df615a9611d81, type: 3}
