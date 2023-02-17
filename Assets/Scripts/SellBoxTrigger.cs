@@ -23,7 +23,7 @@ public class SellBoxTrigger : MonoBehaviour
         {
             print("++");
             MoneyQuantityInBox++;
-            _productPool.Pool.DeactivateObject();
+            _productPool.Pool.DeactivateObject(product);
         }
     }
 

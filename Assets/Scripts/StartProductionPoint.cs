@@ -18,7 +18,7 @@ public class StartProductionPoint : MonoBehaviour
         _startTrigger = GetComponentInChildren<StartProductionTrigger>();
         StartCoroutine(SpawnProduct());
     }
-    //?
+
     private IEnumerator SpawnProduct()
     {
         while (true)
@@ -26,14 +26,29 @@ public class StartProductionPoint : MonoBehaviour
             if (_startTrigger.CanSpawn)
             {
                 StartCoroutine(_timer.TimerAnimation(_secondsBetweenSpawn));
-                _previusSpawnProduct = _currentSpawnProduct;
+                
+                LinkProducts();
                 _productPool.Pool.ActivateObject();
-                _currentSpawnProduct = _productPool.Pool.GetLastSpawnedObject();
-                _currentSpawnProduct.PreviusProductOnBelt = _previusSpawnProduct;
+
                 yield return new WaitForSeconds(_secondsBetweenSpawn);
             }
 
             yield return null;
         }
+    }
+
+    private void LinkProducts()
+    {
+        _previusSpawnProduct = _currentSpawnProduct;
+        _currentSpawnProduct = _productPool.Pool.GetLastSpawnedObject();
+        
+        if (_currentSpawnProduct == _previusSpawnProduct)
+            return;
+
+        _currentSpawnProduct.PreviusProductOnBelt = _previusSpawnProduct;
+        
+
+        if (_previusSpawnProduct != null)
+            _previusSpawnProduct.NextProductOnBelt = _currentSpawnProduct;
     }
 }

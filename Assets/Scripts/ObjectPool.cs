@@ -7,13 +7,13 @@ public class ObjectPool<T> where T : MonoBehaviour
 {
     private T _prefab;
     private int _SpawnCount;
-    private List<T> _SpawnedList = new();
+    private List<T> _SpawnedList;
     private Vector3 _startPrefabPosition;
     private bool _isDynamic;
     private Quaternion _prefabRotation;
     private Transform _prefabContainer;
 
-    public int LastActiveIndex { get; private set; } = -1;
+    public int LastActiveIndex { get; private set; }
 
     
 
@@ -22,6 +22,7 @@ public class ObjectPool<T> where T : MonoBehaviour
         _prefab = prefab;
         _SpawnCount = spawnCount;
         _isDynamic = isDynamic;
+        _SpawnedList = new List<T>(_SpawnCount);
     }
 
     public void Init(Vector3 position, Quaternion rotation, Transform container)
@@ -41,41 +42,27 @@ public class ObjectPool<T> where T : MonoBehaviour
 
         for (int i = 0; i < activateCount; i++)
         {
+            _SpawnedList[LastActiveIndex++].gameObject.SetActive(true);
+
             if (LastActiveIndex >= _SpawnedList.Count)
             {
-                Debug.Log("all objects in pull are active, index reseted");
-                LastActiveIndex = -1;
+                Debug.Log("all objects in pull are active, index was reseted");
+                LastActiveIndex = 0;
             }
 
-            _SpawnedList[++LastActiveIndex].gameObject.SetActive(true);
+            if (_SpawnedList[LastActiveIndex].gameObject.activeSelf)
+            {
+                Debug.Log("Object already active, index was reseted");
+                LastActiveIndex = 0;
+            }
+            Debug.Log(LastActiveIndex);
         }
     }
 
-    //?
-    public void DeactivateObject(int deactivateCount = 1)
+    public void DeactivateObject(MonoBehaviour obj)
     {
-        if (deactivateCount > LastActiveIndex || deactivateCount > _SpawnCount)
-            return;
-
-        for (int i = 0; i < deactivateCount; i++)
-        {
-
-            for (int j = i; j < LastActiveIndex; j++)
-            {
-                T obj = _SpawnedList[i];
-
-                if (obj.gameObject.activeSelf)
-                {
-                    obj.gameObject.SetActive(false);
-                    obj.transform.position = _startPrefabPosition;
-                    LastActiveIndex--;
-
-                    if (LastActiveIndex <= 0)
-                        LastActiveIndex = 0;
-                    return;
-                }
-            }
-        }
+        _SpawnedList[GetObjectIndex(obj)].gameObject.SetActive(false);
+        obj.gameObject.transform.position = _startPrefabPosition;
     }
 
     public T GetObjectFromPool(int index)
@@ -98,6 +85,17 @@ public class ObjectPool<T> where T : MonoBehaviour
 
         for(int i = _SpawnedList.Count; i < _SpawnCount; i++)
             SpawnObject();
+    }
+
+    public int GetObjectIndex(MonoBehaviour obj)
+    {
+        for (int i = 0; i < _SpawnedList.Count; i++)
+        {
+            if (_SpawnedList[i] == obj)
+                return i;
+        }
+
+        return -1;
     }
 
     private void SpawnObject()

@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Product : MonoBehaviour
 {
     [SerializeField] private float _maxDistance;    
     [HideInInspector] public Product PreviusProductOnBelt;
+    [HideInInspector] public Product NextProductOnBelt;
 
     public float SpeedOnBelt { get; private set; }
 
@@ -16,7 +16,7 @@ public class Product : MonoBehaviour
     {
         SpeedOnBelt = 1;
         _rb = GetComponent<Rigidbody2D>();
-    }
+    } 
 
     private void Update()
     {
