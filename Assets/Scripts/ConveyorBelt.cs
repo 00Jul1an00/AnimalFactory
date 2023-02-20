@@ -11,4 +11,12 @@ public class ConveyorBelt : MonoBehaviour
         if (collision.attachedRigidbody.TryGetComponent(out Product product))
             product.transform.position += new Vector3(product.SpeedOnBelt * Time.deltaTime * _speedMultiply, 0);
     }
+
+    public void SetSpeedMultiply(float value)
+    {
+        if(value <= 1)
+            return;
+
+        _speedMultiply = value;
+    }
 }
