@@ -1608,7 +1608,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001ff2848c20fc74897c466f16fee6a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trigger: {fileID: 1267808110}
+  _triggers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _itTriggers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &515826920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2069,6 +2076,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4943700071078969904, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
+      propertyPath: m_Name
+      value: IterationTrigger 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943700071078969904, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
+      propertyPath: m_TagString
+      value: IterationTrigger
+      objectReference: {fileID: 0}
     - target: {fileID: 5889884177757009841, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
       propertyPath: m_Size.x
       value: 2.9771905
@@ -2396,9 +2411,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Iteration (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1651805265464390364, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4164484228368282784, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943700071078969904, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
+      propertyPath: m_Name
+      value: IterationTrigger 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943700071078969904, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
+      propertyPath: m_TagString
+      value: IterationTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 5889884177757009841, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
       propertyPath: m_Size.x
@@ -4494,6 +4521,14 @@ PrefabInstance:
     - target: {fileID: 4164484228368282784, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
       propertyPath: m_SortingOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943700071078969904, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
+      propertyPath: m_Name
+      value: IterationTrigger 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4943700071078969904, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
+      propertyPath: m_TagString
+      value: IterationTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 5889884177757009841, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
       propertyPath: m_Size.x
