@@ -10,6 +10,8 @@ public class SpeedUpManager : MonoBehaviour
     [SerializeField] private int _speedMultiplier;
     [SerializeField] private float _speedUpDurationInSec = 10;
 
+
+    private bool isManagerActive = false;
     private void Start()
     {
         _speedUpDurationInSec *= 1000f;
@@ -36,10 +38,10 @@ public class SpeedUpManager : MonoBehaviour
         
     }
 
-    //private void OnMouseDown()
-    //{
-     //   SpeedUp();
-    //}
+    private void OnMouseDown()
+    {
+       SpeedUp();
+    }
 
     
 }
