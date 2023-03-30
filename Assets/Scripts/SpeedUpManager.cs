@@ -25,7 +25,16 @@ public class SpeedUpManager : MonoBehaviour
 
     private void Update()
     {
-        
+        if (isManagerActive) 
+        {
+            while (_speedUpDurationInSec > 0)
+            {
+                _speedUpDurationInSec -= Time.deltaTime;
+                print(_speedUpDurationInSec);
+            }
+
+           
+        }
     }
 
     public void SpeedUp()
@@ -40,7 +49,15 @@ public class SpeedUpManager : MonoBehaviour
 
     private void OnMouseDown()
     {
-       SpeedUp();
+       if (isManagerActive == false)
+       { 
+            SpeedUp();
+            isManagerActive = true;
+       }
+       else if (isManagerActive == true) 
+       {
+            return;
+       }
     }
 
     

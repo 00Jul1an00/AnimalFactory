@@ -1616,6 +1616,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _speedMultiplier: 5
+  _speedUpDurationInSec: 5
 --- !u!114 &515826920
 MonoBehaviour:
   m_ObjectHideFlags: 0
