@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public enum QuestType
+public enum QuestGoalType
 {
     ClickCount,
     UpgradeLvl,
-
 }
 
 public enum QuestReward
@@ -19,27 +18,20 @@ public enum QuestReward
 
 public class Quest : MonoBehaviour
 {
-    [SerializeField] private QuestReward _rewardType;
-    [SerializeField] private QuestType _questType;
-    //если передавать в rewardType кейсы или предметы, нужно передовать в rewardValue id предмета
-    [SerializeField] private int _rewardValue;
+    [SerializeField] private string _label;
     [SerializeField] private string _description;
-    public QuestReward RewardType { get { return _rewardType; } protected set { _rewardType = value; } }
-    public bool IsComplete { get; protected set; }
+
+    [SerializeField] private IReward _rewardType;
+    [SerializeField] private QuestGoal _questGoal;
+    public IReward RewardType { get { return _rewardType; } private set { _rewardType = value; } }
+    public QuestGoal QuestGoal { get { return _questGoal; } private set { _questGoal = value; } }
     public int QuestId { get; protected set; }
 
     public event Action QuestComplete;
-    public delegate Func<bool> QuestPredicate();
 
     private void Init() 
     {
 
-    }
-
-    public virtual void Complete()
-    {
-        QuestComplete?.Invoke();
-        IsComplete = true;
     }
 
     private void Update()
