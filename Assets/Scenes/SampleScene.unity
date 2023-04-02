@@ -3169,7 +3169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7544846, y: 0.6884572}
   m_AnchorMax: {x: 0.90867704, y: 0.81000006}
-  m_AnchoredPosition: {x: -2.000122, y: -1.9250183}
+  m_AnchoredPosition: {x: -2.000122, y: -1.9250488}
   m_SizeDelta: {x: -4.860016, y: 2.1500244}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &992698128
@@ -3291,7 +3291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1228112, y: 0.6884572}
   m_AnchorMax: {x: 0.27100003, y: 0.81000006}
-  m_AnchoredPosition: {x: 1.5002441, y: -1.9249573}
+  m_AnchoredPosition: {x: 1.5002441, y: -1.9249268}
   m_SizeDelta: {x: 7.1400146, y: 2.1500244}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1070862174
@@ -4953,8 +4953,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1886798054}
-  - component: {fileID: 1886798053}
-  - component: {fileID: 1886798052}
+  - component: {fileID: 1886798056}
+  - component: {fileID: 1886798055}
   m_Layer: 0
   m_Name: QuestTest
   m_TagString: Untagged
@@ -4962,35 +4962,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1886798052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886798051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19cfa57b066c3c040ac3dfdf80337feb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentProgres: 0
-  _requireProgres: 0
---- !u!114 &1886798053
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1886798051}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b36fe4700e0b8498c0ad57bc79be8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _label: 
-  _description: 
-  _questGoal: {fileID: 0}
 --- !u!4 &1886798054
 Transform:
   m_ObjectHideFlags: 0
@@ -5006,6 +4977,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1886798055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886798051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19cfa57b066c3c040ac3dfdf80337feb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentProgres: 0
+  _requireProgres: 0
+--- !u!114 &1886798056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886798051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5b36fe4700e0b8498c0ad57bc79be8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _label: 
+  _description: 
+  _rewardType: 0
+  _questGoal: 0
 --- !u!1 &1920812373
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IReward
 {
-    public int RewardValue { get; protected set; }
+    //public int RewardValue { get; protected set; }
 }
 
