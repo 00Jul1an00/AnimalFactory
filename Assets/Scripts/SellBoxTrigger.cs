@@ -8,11 +8,11 @@ public class SellBoxTrigger : MonoBehaviour
     [SerializeField] private GameObject _moneyManager;
 
     public int MoneyQuantityInBox = 0;
-    private MoneyLogic _moneyLogic;
+    //private MoneyLogic _moneyLogic;
 
     private void Start()
     {
-        _moneyLogic = _moneyManager.GetComponent<MoneyLogic>();
+        //_moneyLogic = _moneyManager.GetComponent<MoneyLogic>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -29,8 +29,8 @@ public class SellBoxTrigger : MonoBehaviour
 
     public void SellProducts()
     {
-        _moneyLogic.Money += MoneyQuantityInBox;
+        //_moneyLogic.Money += MoneyQuantityInBox;
         MoneyQuantityInBox = 0;
-        _moneyLogic.DrawMoney();
+        //_moneyLogic.DrawMoney();
     }
 }
