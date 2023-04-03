@@ -31,27 +31,34 @@ public class Quest : MonoBehaviour
 
     private void OnValidate()
     {
+        QuestGoal = GetComponent<QuestGoal>();
         if (QuestGoal != null)
             return;
 
         switch (_questGoal)
         {
-            case (QuestGoalType.ClickCount):
+            case (QuestGoalType.ClickCount):             
                 gameObject.AddComponent<ClickCountGoal>();
-                QuestGoal = GetComponent<ClickCountGoal>();
                 return;
             case (QuestGoalType.UpgradeLevel):
                 gameObject.AddComponent<UpgradeLevelGoal>();
-                QuestGoal = GetComponent<UpgradeLevelGoal>();
                 return;
         }
     }
 
+    private void Start()
+    {
+        QuestGoal = GetComponent<QuestGoal>();
+    }
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (QuestGoal.IsDone)
         {
-
+            print("Quest Complete");
+            QuestComplete?.Invoke();
+            gameObject.SetActive(false);
         }
+
     }
 }
