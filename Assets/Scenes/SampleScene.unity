@@ -1046,7 +1046,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 84821615293170285, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: _speedMultiply
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2859589338594490531, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_Name
@@ -5063,7 +5063,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeCost: 1
-  _dollarsLogic: {fileID: 0}
+  _dollarsLogic: {fileID: 1931161595}
+  _speedUpMultiply: 1.1
 --- !u!1001 &1752704023
 PrefabInstance:
   m_ObjectHideFlags: 0
