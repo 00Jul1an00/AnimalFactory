@@ -7,10 +7,16 @@ public class DiamondsLogic : CurrencyLogic
 {
     [SerializeField] private TextMeshProUGUI _diamondText;
 
-    public override int CurrencyCount => 10;
+    private int _diamondValue = 10;
+    public override int CurrencyCount { get { return _diamondValue; } set { _diamondValue += value; } }
 
     protected override void DrawMoney()
+    {                        
+        _diamondText.text = _diamondValue.ToString();                 
+    }
+
+    private void Update()
     {
-        _diamondText.text = _diamondText.ToString();
+        DrawMoney();
     }
 }

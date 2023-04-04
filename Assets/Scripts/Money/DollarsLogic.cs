@@ -6,12 +6,18 @@ using UnityEngine;
 public class DollarsLogic : CurrencyLogic
 {
     [SerializeField] private TextMeshProUGUI _dollarText;
-    public override int CurrencyCount => 100;
+
+    private int _dollarsValue = 100;
+    public override int CurrencyCount { get { return _dollarsValue; } set { _dollarsValue += value; } }
 
     protected override void DrawMoney()
-    {
-        _dollarText.text = _dollarText.ToString();
+    {            
+        _dollarText.text = _dollarsValue.ToString() + "$";                 
     }
 
-    
+    private void Update()
+    {
+        DrawMoney();
+    }
+
 }
