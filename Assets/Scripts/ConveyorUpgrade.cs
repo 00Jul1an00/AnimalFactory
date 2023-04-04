@@ -5,15 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(ConveyorBelt))]
 public class ConveyorUpgrade : BaseUpgrade
 {
-    private ConveyorBelt _ConveyorBelt;
+    [SerializeField] private float _speedUpMul;
 
+    private ConveyorBelt _conveyorBelt;
     private void Start()
     {
-        _ConveyorBelt = GetComponent<ConveyorBelt>();    
+        _conveyorBelt = GetComponent<ConveyorBelt>();    
     }
 
     protected override void UpgradeLogic()
     {
         print("from CU");
+        _conveyorBelt.SetSpeedMultiply(_speedUpMul);
     }
 }

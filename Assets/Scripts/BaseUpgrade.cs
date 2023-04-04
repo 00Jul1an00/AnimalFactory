@@ -17,14 +17,10 @@ public abstract class BaseUpgrade : MonoBehaviour
     {
         if (_dollarsLogic.CurrencyCount <= _upgradeCost)
         {
-            print("not enouth money");
+            print("not enough money");
             return;
         }
-
         UpgradeLogic();
         Upgraded?.Invoke(this);
     }
-
-
-
 }
