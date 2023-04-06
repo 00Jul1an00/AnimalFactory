@@ -31,14 +31,15 @@ public class UpgradeMenu : MonoBehaviour
 
     private List<Button> _allUpgradesButtons;
     private List<BaseUpgrade> _allUpgrades;
+    private List<TMP_Text> _pricesText;
 
     private void Start()
     {
         _allUpgradesButtons = new List<Button>() { _workerIButton, _workerIIButton, _workerIIIButton, _conveyorButton, _productButton };
         _allUpgrades = new List<BaseUpgrade>() { _workerIUpgrade, _workerIIUpgrade, _workerIIIUpgrade, _conveyorUpgrade, _productUpgrade };
+        _pricesText = new List<TMP_Text>() { _workerIUpgradePrice, _workerIIUpgradePrice, _workerIIIUpgradePrice, _conveyorUpgradePrice, _productUpgradePrice };
         _closeButton.onClick.AddListener(CloseMenu);
         UpgradesInit();
-
     }
 
     public void CloseMenu() => this.gameObject.SetActive(false);
@@ -49,6 +50,7 @@ public class UpgradeMenu : MonoBehaviour
         {
             _allUpgradesButtons[i].onClick.AddListener(_allUpgrades[i].Upgrade);
             _allUpgrades[i].Upgraded += OnUpgraded;
+            _pricesText[i].text = _allUpgrades[i].UpgradeCost.ToString();
         }
     }
 
@@ -59,6 +61,7 @@ public class UpgradeMenu : MonoBehaviour
 
     private void OnUpgraded(BaseUpgrade upgrade)
     {
-        Debug.Log("onEvent");
+        int index = _allUpgrades.IndexOf(upgrade);
+        
     }
 }

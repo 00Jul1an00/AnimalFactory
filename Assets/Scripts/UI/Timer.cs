@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
+    private float _duration;
     private Slider _timerSlider;
     private readonly int _smoothleness = 30;
 
@@ -20,6 +21,7 @@ public class Timer : MonoBehaviour
 
     public IEnumerator TimerAnimation(float duration)
     {
+        _duration = duration;
         float t = 0; 
         float min = duration / _smoothleness;
         float max = duration;

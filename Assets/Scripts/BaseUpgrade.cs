@@ -9,7 +9,7 @@ public abstract class BaseUpgrade : MonoBehaviour
     [SerializeField] private DollarsLogic _dollarsLogic;
 
     public event Action<BaseUpgrade> Upgraded;
-    public int UpgradeCost { get; protected set; }
+    public int UpgradeCost { get { return _upgradeCost; } protected set { _upgradeCost = value; } }
     
     protected abstract void UpgradeLogic();
 
