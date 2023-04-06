@@ -56,7 +56,6 @@ public class ObjectPool<T> where T : MonoBehaviour
                 Debug.Log("Object already active, index was reseted");
                 LastActiveIndex = 0;
             }
-            Debug.Log(LastActiveIndex);
         }
     }
 

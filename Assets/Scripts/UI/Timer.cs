@@ -4,9 +4,11 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    private float _duration;
     private Slider _timerSlider;
-    private readonly int _smoothleness = 30;
+    
+    private const int DURATION_SPLITING = 50;
+
+    public float AnimationDuration { get { return AnimationDuration; } set { AnimationDuration = value; } }
 
     private void Start()
     {
@@ -19,19 +21,18 @@ public class Timer : MonoBehaviour
         _timerSlider.normalizedValue = value;
     }
 
-    public IEnumerator TimerAnimation(float duration)
+    public IEnumerator FixedTimerAnimation(float duration)
     {
-        _duration = duration;
-        float t = 0; 
-        float min = duration / _smoothleness;
+        float t = 0;
+        float min = duration / DURATION_SPLITING;
         float max = duration;
         float normalizeValue = min / max;
 
-        for (int i = 0; i < _smoothleness; i++)
-        {   
+        for (int i = 0; i < DURATION_SPLITING; i++)
+        {     
             t += normalizeValue;
             UpdateValueOnTimer(t);
-            yield return new WaitForSeconds(duration / _smoothleness);
+            yield return new WaitForSeconds(duration / DURATION_SPLITING);
         }
 
         UpdateValueOnTimer(0);

@@ -7,6 +7,8 @@ public class IterationTrigger : MonoBehaviour
     [SerializeField] private float _productionDelay;
     [SerializeField] private Timer _timer;
 
+    private const int DURATION_SPLITING = 50;
+
     public float ProductionDelay { get { return _productionDelay; } set { if (value > 0) _productionDelay = value; } }
 
     private Product _productOnIteration;
@@ -14,7 +16,14 @@ public class IterationTrigger : MonoBehaviour
     private IEnumerator WaitforProductionDelay()
     {
         _productOnIteration.StopProductOnBelt();
-        yield return new WaitForSeconds(_productionDelay);
+
+        for (int i = 0; i < DURATION_SPLITING; i++)
+        {
+            yield return new WaitForSeconds(_productionDelay / DURATION_SPLITING);
+            print(_productionDelay / DURATION_SPLITING);
+        }
+
+        
         _productOnIteration.MoveProductOnBelt();
         
     }
@@ -25,7 +34,7 @@ public class IterationTrigger : MonoBehaviour
         { 
             _productOnIteration = product;
            StartCoroutine(WaitforProductionDelay());
-            StartCoroutine(_timer.TimerAnimation(_productionDelay));
+           StartCoroutine(_timer.FixedTimerAnimation(_productionDelay));
         }
     }
 }

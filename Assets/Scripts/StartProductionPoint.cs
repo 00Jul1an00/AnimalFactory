@@ -25,8 +25,7 @@ public class StartProductionPoint : MonoBehaviour
         {
             if (_startTrigger.CanSpawn)
             {
-                StartCoroutine(_timer.TimerAnimation(_secondsBetweenSpawn));
-                
+                StartCoroutine(_timer.FixedTimerAnimation(_secondsBetweenSpawn));                
                 LinkProducts();
                 _productPool.Pool.ActivateObject();
 
