@@ -25,4 +25,6 @@ public abstract class BaseUpgrade : MonoBehaviour
         UpgradeLogic();
         Upgraded?.Invoke(this);
     }
+
+    //private void Start() => _dollarsLogic = FindObjectOfType<DollarsLogic>();
 }

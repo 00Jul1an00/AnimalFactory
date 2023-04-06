@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ProductUpgrade : BaseUpgrade
 {
+    [Min(1)]
+    [SerializeField] private float _costMultiply;
+
     private List<Product> _products;
 
     public void FillUpListWithProducts(List<Product> products)
@@ -14,6 +17,7 @@ public class ProductUpgrade : BaseUpgrade
 
     protected override void UpgradeLogic()
     {
-        print("from PU");
+        foreach(Product product in _products)
+            product.Cost *= _costMultiply;
     }
 }

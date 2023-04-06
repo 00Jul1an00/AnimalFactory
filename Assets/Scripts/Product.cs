@@ -3,11 +3,13 @@ using System;
 
 public class Product : MonoBehaviour
 {
-    [SerializeField] private float _maxDistance;    
+    [SerializeField] private float _maxDistance;
+    [SerializeField] private float _cost = 1;
     [HideInInspector] public Product PreviusProductOnBelt;
     [HideInInspector] public Product NextProductOnBelt;
 
     public float SpeedOnBelt { get; private set; }
+    public float Cost { get { return _cost; } set { if (value > 0) _cost = value; } }
 
     private bool _isStoped = false;
     private Rigidbody2D _rb;

@@ -5,15 +5,11 @@ using UnityEngine;
 public class SellBoxTrigger : MonoBehaviour
 {
     [SerializeField] private ProductPool _productPool;
-    [SerializeField] private GameObject _moneyManager;
+    private DollarsLogic _dollarsLogic;
 
-    public int MoneyQuantityInBox = 0;
-    //private MoneyLogic _moneyLogic;
+    public int _moneyQuantityInBox = 0;
 
-    private void Start()
-    {
-        //_moneyLogic = _moneyManager.GetComponent<MoneyLogic>();
-    }
+    private void Start() => _dollarsLogic = FindObjectOfType<DollarsLogic>();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,16 +17,14 @@ public class SellBoxTrigger : MonoBehaviour
 
         if (product != null)
         {
-            print("++");
-            MoneyQuantityInBox++;
+            _moneyQuantityInBox += (int)product.Cost;
             _productPool.Pool.DeactivateObject(product);
         }
     }
 
     public void SellProducts()
     {
-        //_moneyLogic.Money += MoneyQuantityInBox;
-        MoneyQuantityInBox = 0;
-        //_moneyLogic.DrawMoney();
+        _dollarsLogic.CurrencyCount += _moneyQuantityInBox;
+        _moneyQuantityInBox = 0;
     }
 }

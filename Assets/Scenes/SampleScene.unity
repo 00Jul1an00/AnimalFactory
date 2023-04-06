@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _productPrefab: {fileID: -1604093385589957806, guid: 474f915d27fbf73419e9cd276d4bb70e, type: 3}
   _poolCapacity: 100
+  _productUpgrade: {fileID: 8613397}
 --- !u!114 &8613397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,8 +183,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 420a2abd25f7ed24099272239ead37fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeCost: 1
-  _dollarsLogic: {fileID: 0}
+  _upgradeCost: 50
+  _dollarsLogic: {fileID: 1931161595}
+  _costMultiply: 2
 --- !u!1 &15085686
 GameObject:
   m_ObjectHideFlags: 0
@@ -2724,8 +2726,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8089163f3077b47b4c31e423872cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeCost: 1
-  _dollarsLogic: {fileID: 0}
+  _upgradeCost: 10
+  _dollarsLogic: {fileID: 1931161595}
+  _upgradeSpeedMultiply: 3
 --- !u!1 &661912821
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,8 +3542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8089163f3077b47b4c31e423872cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeCost: 1
-  _dollarsLogic: {fileID: 0}
+  _upgradeCost: 10
+  _dollarsLogic: {fileID: 1931161595}
+  _upgradeSpeedMultiply: 4
 --- !u!1 &1267808110 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4943700071078969904, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
@@ -3558,8 +3562,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8089163f3077b47b4c31e423872cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeCost: 1
-  _dollarsLogic: {fileID: 0}
+  _upgradeCost: 10
+  _dollarsLogic: {fileID: 1931161595}
+  _upgradeSpeedMultiply: 2
 --- !u!1 &1300761486 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2880585312703762944, guid: c565064ba225f3e4ba4df615a9611d81, type: 3}
@@ -4910,8 +4915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _productPool: {fileID: 8613396}
-  _moneyManager: {fileID: 0}
-  MoneyQuantityInBox: 0
+  _moneyQuantityInBox: 0
 --- !u!61 &1576872328
 BoxCollider2D:
   m_ObjectHideFlags: 0

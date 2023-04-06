@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(IterationTrigger))]
 public class WorkerUpgrade : BaseUpgrade
 {
+    [Min(1)]
+    [SerializeField] private float _upgradeSpeedMultiply;
     private IterationTrigger _worker;
 
     private void Start()
@@ -14,6 +16,6 @@ public class WorkerUpgrade : BaseUpgrade
 
     protected override void UpgradeLogic()
     {
-        print("from WU");
+        _worker.ProductionDelay /= _upgradeSpeedMultiply; 
     }
 }

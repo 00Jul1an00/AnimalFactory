@@ -6,6 +6,7 @@ public class ProductPool : MonoBehaviour
 {
     [SerializeField] private Product _productPrefab;
     [SerializeField] private int _poolCapacity;
+    [SerializeField] private ProductUpgrade _productUpgrade;
 
     public ObjectPool<Product> Pool { get; private set; }
 
@@ -13,5 +14,6 @@ public class ProductPool : MonoBehaviour
     {
         Pool = new ObjectPool<Product>(_productPrefab, _poolCapacity);
         Pool.Init(transform.position, Quaternion.identity, transform);
+        _productUpgrade.FillUpListWithProducts(Pool.SpawnedList);
     }
 }
