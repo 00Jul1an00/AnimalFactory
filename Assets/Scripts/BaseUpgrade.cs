@@ -15,11 +15,13 @@ public abstract class BaseUpgrade : MonoBehaviour
 
     public virtual void Upgrade()
     {
-        if (_dollarsLogic.CurrencyCount <= _upgradeCost)
+        if (_dollarsLogic.CurrencyCount < _upgradeCost)
         {
             print("not enough money");
             return;
         }
+        _dollarsLogic.CurrencyCount -= _upgradeCost;
+        GameEvents.instance.MoneyChanged();
         UpgradeLogic();
         Upgraded?.Invoke(this);
     }
