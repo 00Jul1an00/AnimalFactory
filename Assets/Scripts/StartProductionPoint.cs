@@ -16,6 +16,7 @@ public class StartProductionPoint : MonoBehaviour
     private void Start()
     {
         _startTrigger = GetComponentInChildren<StartProductionTrigger>();
+        _timer.AnimationDuration = _secondsBetweenSpawn;
         StartCoroutine(SpawnProduct());
     }
 
@@ -25,7 +26,7 @@ public class StartProductionPoint : MonoBehaviour
         {
             if (_startTrigger.CanSpawn)
             {
-                StartCoroutine(_timer.FixedTimerAnimation(_secondsBetweenSpawn));                
+                StartCoroutine(_timer.TimerAnimation());                
                 LinkProducts();
                 _productPool.Pool.ActivateObject();
 
@@ -44,8 +45,7 @@ public class StartProductionPoint : MonoBehaviour
         if (_currentSpawnProduct == _previusSpawnProduct)
             return;
 
-        _currentSpawnProduct.PreviusProductOnBelt = _previusSpawnProduct;
-        
+        _currentSpawnProduct.PreviusProductOnBelt = _previusSpawnProduct;    
 
         if (_previusSpawnProduct != null)
             _previusSpawnProduct.NextProductOnBelt = _currentSpawnProduct;

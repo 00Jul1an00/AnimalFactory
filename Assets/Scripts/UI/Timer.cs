@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     
     private const int DURATION_SPLITING = 50;
 
-    public float AnimationDuration { get { return AnimationDuration; } set { AnimationDuration = value; } }
+    public float AnimationDuration { get; set; }
 
     private void Start()
     {
@@ -21,20 +21,26 @@ public class Timer : MonoBehaviour
         _timerSlider.normalizedValue = value;
     }
 
-    public IEnumerator FixedTimerAnimation(float duration)
+    public IEnumerator TimerAnimation()
     {
         float t = 0;
-        float min = duration / DURATION_SPLITING;
-        float max = duration;
-        float normalizeValue = min / max;
+        float normalizeValue = CalcNormolizeValue(AnimationDuration);
 
         for (int i = 0; i < DURATION_SPLITING; i++)
-        {     
+        {
+            
             t += normalizeValue;
             UpdateValueOnTimer(t);
-            yield return new WaitForSeconds(duration / DURATION_SPLITING);
+            yield return new WaitForSeconds(AnimationDuration / DURATION_SPLITING);
         }
 
         UpdateValueOnTimer(0);
+    }
+
+    private float CalcNormolizeValue(float value)
+    {
+        float min = value / DURATION_SPLITING;
+        float max = value;
+        return min / max;
     }
 }
