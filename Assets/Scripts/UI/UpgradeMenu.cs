@@ -54,14 +54,14 @@ public class UpgradeMenu : MonoBehaviour
         }
     }
 
-    private void PriceTextUpdate()
+    private void PriceTextUpdate(int index)
     {
-
+        _pricesText[index].text = _allUpgrades[index].UpgradeCost.ToString();
     }
 
     private void OnUpgraded(BaseUpgrade upgrade)
     {
         int index = _allUpgrades.IndexOf(upgrade);
-        
+        PriceTextUpdate(index);
     }
 }

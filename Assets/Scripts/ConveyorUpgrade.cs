@@ -16,7 +16,6 @@ public class ConveyorUpgrade : BaseUpgrade
 
     protected override void UpgradeLogic()
     {
-        print("from CU");
         _conveyorBelt.SetSpeedMultiply(_speedUpMultiply);
     }
 }

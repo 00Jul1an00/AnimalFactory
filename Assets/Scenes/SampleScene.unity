@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeCost: 50
+  _upgradeCostMiltiply: 2
   _dollarsLogic: {fileID: 1931161595}
   _costMultiply: 2
 --- !u!1 &15085686
@@ -1248,7 +1249,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1466,7 +1467,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683080804390635946, guid: c565064ba225f3e4ba4df615a9611d81, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0.5000002
       objectReference: {fileID: 0}
     - target: {fileID: 3683080804390635946, guid: c565064ba225f3e4ba4df615a9611d81, type: 3}
       propertyPath: m_Pivot.y
@@ -1510,7 +1511,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683080804390635946, guid: c565064ba225f3e4ba4df615a9611d81, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -2.38
       objectReference: {fileID: 0}
     - target: {fileID: 3683080804390635946, guid: c565064ba225f3e4ba4df615a9611d81, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1530,11 +1531,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3683080804390635946, guid: c565064ba225f3e4ba4df615a9611d81, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -876
+      value: -799
       objectReference: {fileID: 0}
     - target: {fileID: 3683080804390635946, guid: c565064ba225f3e4ba4df615a9611d81, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 266.09998
+      value: 266.0998
       objectReference: {fileID: 0}
     - target: {fileID: 3683080804390635946, guid: c565064ba225f3e4ba4df615a9611d81, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1636,7 +1637,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &507228084
 GameObject:
@@ -1690,7 +1691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2271,7 +2272,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &561029568
 PrefabInstance:
@@ -2735,6 +2736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeCost: 20
+  _upgradeCostMiltiply: 1.1
   _dollarsLogic: {fileID: 1931161595}
   _upgradeSpeedMultiply: 3
 --- !u!1 &661912821
@@ -2955,12 +2957,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 879982328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.68577194, y: 0.121067405, z: 3.7632184}
+  m_LocalPosition: {x: -2.056255, y: -0.59454775, z: -6.1888986}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1886798054}
-  m_RootOrder: 0
+  m_Father: {fileID: 2031954111}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &879982331
 MonoBehaviour:
@@ -2976,8 +2978,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _label: 
   _description: 
-  _rewardType: 0
-  _questGoal: 1
+  _questRewardType: 1
+  _rewardValue: 10
+  _questGoal: 0
 --- !u!114 &879982332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2987,11 +2990,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 879982328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14b60e028a9361a40ab366c99e6e9b65, type: 3}
+  m_Script: {fileID: 11500000, guid: 19cfa57b066c3c040ac3dfdf80337feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _currentProgres: 0
-  _requireProgres: 90
+  _requireProgres: 30
 --- !u!1 &892892464
 GameObject:
   m_ObjectHideFlags: 0
@@ -3510,7 +3513,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _label: 
   _description: 
-  _rewardType: 0
+  _questRewardType: 0
+  _rewardValue: 100
   _questGoal: 0
 --- !u!4 &1073113867
 Transform:
@@ -3519,14 +3523,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1073113864}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5111318, y: -0.34756202, z: -9.97115}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.3704832, y: -0.71561515, z: -9.952117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1328370278}
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_Children: []
+  m_Father: {fileID: 2031954111}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1181944186 stripped
 Transform:
@@ -3551,6 +3554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeCost: 30
+  _upgradeCostMiltiply: 1.1
   _dollarsLogic: {fileID: 1931161595}
   _upgradeSpeedMultiply: 4
 --- !u!1 &1267808110 stripped
@@ -3571,6 +3575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeCost: 10
+  _upgradeCostMiltiply: 1.1
   _dollarsLogic: {fileID: 1931161595}
   _upgradeSpeedMultiply: 2
 --- !u!1 &1300761486 stripped
@@ -3851,69 +3856,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1324765955}
   m_CullTransparentMesh: 1
---- !u!1 &1328370277
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1328370278}
-  - component: {fileID: 1328370280}
-  - component: {fileID: 1328370279}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1328370278
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328370277}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.68577194, y: 0.121067405, z: 3.7632184}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1073113867}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1328370279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328370277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14b60e028a9361a40ab366c99e6e9b65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentProgres: 0
-  _requireProgres: 90
---- !u!114 &1328370280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328370277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a5b36fe4700e0b8498c0ad57bc79be8d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _label: 
-  _description: 
-  _rewardType: 0
-  _questGoal: 1
 --- !u!1 &1347255172
 GameObject:
   m_ObjectHideFlags: 0
@@ -4923,7 +4865,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _productPool: {fileID: 8613396}
-  _moneyQuantityInBox: 0
 --- !u!61 &1576872328
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5075,6 +5016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeCost: 10
+  _upgradeCostMiltiply: 1.1
   _dollarsLogic: {fileID: 1931161595}
   _speedUpMultiply: 1.1
 --- !u!1001 &1752704023
@@ -5321,14 +5263,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886798051}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5111318, y: -0.34756202, z: -9.97115}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.3704832, y: -0.71561515, z: -9.952117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 879982329}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Children: []
+  m_Father: {fileID: 2031954111}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1886798056
 MonoBehaviour:
@@ -5344,7 +5285,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _label: 
   _description: 
-  _rewardType: 0
+  _questRewardType: 0
+  _rewardValue: 200
   _questGoal: 0
 --- !u!114 &1886798057
 MonoBehaviour:
@@ -5670,8 +5612,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1947006641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.019, y: -0.544, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.019, y: 2.15, z: 0}
+  m_LocalScale: {x: 1, y: 6.44, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1633450147}
@@ -5850,6 +5792,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012721089}
   m_CullTransparentMesh: 1
+--- !u!1 &2031954109
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2031954111}
+  - component: {fileID: 2031954110}
+  m_Layer: 0
+  m_Name: QuestSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2031954110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031954109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c634ee62585e8c44490b91bd16e875f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _quests: []
+--- !u!4 &2031954111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031954109}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1886798054}
+  - {fileID: 1073113867}
+  - {fileID: 879982329}
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2041047504
 GameObject:
   m_ObjectHideFlags: 0

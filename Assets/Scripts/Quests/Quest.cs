@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using System.Linq;
 
 public enum QuestGoalType
 {
@@ -11,7 +12,7 @@ public enum QuestGoalType
 
 public enum QuestReward
 {
-    Money,
+    Dollars,
     Diamonds,
     Case,
 }
@@ -21,15 +22,23 @@ public class Quest : MonoBehaviour
     [SerializeField] private string _label;
     [SerializeField] private string _description;
 
-    [SerializeField] private QuestReward _rewardType;
+    [SerializeField] private QuestReward _questRewardType;
+    [SerializeField] private int _rewardValue;
     [SerializeField] private QuestGoalType _questGoal;
-    public IReward RewardType { get; private set; }
+
+    public IReward QuestRewardType { get; private set; }
     public QuestGoal QuestGoal { get; private set; }
-    public int QuestId { get; protected set; }
+    public int QuestId { get; private set; }
+    private QuestSystem _questSystem;
 
     public event Action QuestComplete;
 
     private void OnValidate()
+    {
+        ValidateGoal();
+    }
+
+    private void ValidateGoal()
     {
         QuestGoal = GetComponent<QuestGoal>();
         if (QuestGoal != null)
@@ -37,7 +46,7 @@ public class Quest : MonoBehaviour
 
         switch (_questGoal)
         {
-            case (QuestGoalType.ClickCount):             
+            case (QuestGoalType.ClickCount):
                 gameObject.AddComponent<ClickCountGoal>();
                 return;
             case (QuestGoalType.UpgradeLevel):
@@ -46,9 +55,16 @@ public class Quest : MonoBehaviour
         }
     }
 
+    private void ValidateReward()
+    {
+        _questSystem = FindObjectOfType<QuestSystem>();
+        QuestRewardType = _questSystem.PossibleRewards.Where(r => r.Reward == _questRewardType).First();
+    }
+
     private void Start()
     {
         QuestGoal = GetComponent<QuestGoal>();
+        ValidateReward();
     }
 
     private void Update()
@@ -57,6 +73,7 @@ public class Quest : MonoBehaviour
         {
             print("Quest Complete");
             QuestComplete?.Invoke();
+            QuestRewardType.GiveReward(_rewardValue);
             gameObject.SetActive(false);
         }
 

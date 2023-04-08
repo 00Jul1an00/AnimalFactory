@@ -18,6 +18,6 @@ public class ProductUpgrade : BaseUpgrade
     protected override void UpgradeLogic()
     {
         foreach(Product product in _products)
-            product.Cost *= _costMultiply;
+            product.Cost = Mathf.CeilToInt(product.Cost * _costMultiply);
     }
 }

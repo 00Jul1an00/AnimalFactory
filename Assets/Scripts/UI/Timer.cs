@@ -6,7 +6,7 @@ public class Timer : MonoBehaviour
 {
     private Slider _timerSlider;
     
-    private const int DURATION_SPLITING = 50;
+    public const int DURATION_SPLITING = 50;
 
     public float AnimationDuration { get; set; }
 

@@ -7,7 +7,6 @@ public class IterationTrigger : MonoBehaviour
     [SerializeField] private float _productionDelay;
     [SerializeField] private Timer _timer;
 
-    private const int DURATION_SPLITING = 50;
     private Product _productOnIteration;
 
     public float ProductionDelay 
@@ -32,10 +31,9 @@ public class IterationTrigger : MonoBehaviour
     {
         _productOnIteration.StopProductOnBelt();
 
-        for (int i = 0; i < DURATION_SPLITING; i++)
+        for (int i = 0; i < Timer.DURATION_SPLITING; i++)
         {
-            yield return new WaitForSeconds(_productionDelay / DURATION_SPLITING);
-            print(_productionDelay / DURATION_SPLITING);
+            yield return new WaitForSeconds(_productionDelay / Timer.DURATION_SPLITING);
         }
 
         
