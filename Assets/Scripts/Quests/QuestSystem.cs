@@ -6,10 +6,12 @@ using UnityEngine;
 public class QuestSystem : MonoBehaviour
 {
     [SerializeField] private List<Quest> _quests = new();
-    
+
+    private BaseUpgrade[] _upgradesToCheck;
     private List<IReward> _possibleRewards = new();
 
     public ReadOnlyCollection<IReward> PossibleRewards;
+    public ReadOnlyCollection<BaseUpgrade> UpgradesToCheck;
     public static QuestSystem Instance;
 
     private void Awake()
@@ -31,7 +33,8 @@ public class QuestSystem : MonoBehaviour
     {
         _possibleRewards.Add(FindObjectOfType<DollarsLogic>());
         _possibleRewards.Add(FindObjectOfType<DiamondsLogic>());
-
         PossibleRewards = new(_possibleRewards);
+        _upgradesToCheck = FindObjectsOfType<BaseUpgrade>();
+        UpgradesToCheck = new(_upgradesToCheck);
     }
 }

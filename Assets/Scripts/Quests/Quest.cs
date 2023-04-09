@@ -8,6 +8,7 @@ public enum QuestGoalType
 {
     ClickCount,
     UpgradeLevel,
+    MoneyCount,
 }
 
 public enum QuestReward
@@ -29,7 +30,6 @@ public class Quest : MonoBehaviour
     public IReward QuestRewardType { get; private set; }
     public QuestGoal QuestGoal { get; private set; }
     public int QuestId { get; private set; }
-    private QuestSystem _questSystem;
 
     public event Action QuestComplete;
 
@@ -52,13 +52,15 @@ public class Quest : MonoBehaviour
             case (QuestGoalType.UpgradeLevel):
                 gameObject.AddComponent<UpgradeLevelGoal>();
                 return;
+            case (QuestGoalType.MoneyCount):
+                gameObject.AddComponent<MoneyCountGoal>();
+                return;
         }
     }
 
     private void ValidateReward()
     {
-        _questSystem = FindObjectOfType<QuestSystem>();
-        QuestRewardType = _questSystem.PossibleRewards.Where(r => r.Reward == _questRewardType).First();
+        QuestRewardType = QuestSystem.Instance.PossibleRewards.Where(r => r.Reward == _questRewardType).First();
     }
 
     private void Start()
@@ -76,6 +78,5 @@ public class Quest : MonoBehaviour
             QuestRewardType.GiveReward(_rewardValue);
             gameObject.SetActive(false);
         }
-
     }
 }
