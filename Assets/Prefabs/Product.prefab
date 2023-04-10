@@ -148,8 +148,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxDistance: 1
-  _speed: 2
+  _cost: 0
   PreviusProductOnBelt: {fileID: 0}
+  NextProductOnBelt: {fileID: 0}
 --- !u!50 &1678678588
 Rigidbody2D:
   serializedVersion: 4

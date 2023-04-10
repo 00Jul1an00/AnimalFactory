@@ -13,6 +13,7 @@ public class Product : MonoBehaviour
 
     private bool _isStoped = false;
     private Rigidbody2D _rb;
+    
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class Product : MonoBehaviour
 
         SpeedOnBelt = 1;
         _rb = GetComponent<Rigidbody2D>();
+        
     } 
 
     private void Update()
