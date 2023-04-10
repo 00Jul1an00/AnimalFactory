@@ -5,16 +5,25 @@ using UnityEngine;
 
 public class GameEvents : MonoBehaviour
 {
-    public static GameEvents instance;
-    public event Action onMoneyChanged;
+    public static GameEvents Instance;
+    public event Action OnMoneyChanged;
 
     private void Awake()
     {
-        instance = this;
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+        else if(Instance == this)
+        {
+            Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public void MoneyChanged()
     {
-        onMoneyChanged?.Invoke();
+        OnMoneyChanged?.Invoke();
     }
 }

@@ -8,7 +8,6 @@ public class ClickCountGoal : QuestGoal
 
     private int _clickCount;
     public override int CurrentProgres { get => _clickCount; protected set => _clickCount = value; }
-    public override bool IsDone { get { return _clickCount >= RequireProgres; } protected set => base.IsDone = value; }
 
     private void Start()
     {

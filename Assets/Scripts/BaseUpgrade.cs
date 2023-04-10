@@ -5,12 +5,15 @@ using UnityEngine;
 
 public abstract class BaseUpgrade : MonoBehaviour
 {
-    [SerializeField] private int _upgradeCost;
+
+    [Min(1)] [SerializeField] protected int _upgradeCost;
+    [Min(1)] [SerializeField] protected float _upgradeCostMiltiply;
     [SerializeField] private DollarsLogic _dollarsLogic;
 
     public event Action<BaseUpgrade> Upgraded;
-    public int UpgradeCost { get { return _upgradeCost; } protected set { _upgradeCost = value; } }
-    
+    public float UpgradeCost { get { return _upgradeCost; } }
+    public int UpgradesCount { get; private set; }
+
     protected abstract void UpgradeLogic();
 
     public virtual void Upgrade()
@@ -20,11 +23,18 @@ public abstract class BaseUpgrade : MonoBehaviour
             print("not enough money");
             return;
         }
+
         _dollarsLogic.CurrencyCount -= _upgradeCost;
-        GameEvents.instance.MoneyChanged();
+        ChangeUpgradeCost();
+        UpgradesCount++;
         UpgradeLogic();
         Upgraded?.Invoke(this);
     }
 
-    //private void Start() => _dollarsLogic = FindObjectOfType<DollarsLogic>();
+    protected virtual void ChangeUpgradeCost()
+    {
+        float upgradeCost = _upgradeCost;
+        upgradeCost *= _upgradeCostMiltiply;
+        _upgradeCost = Mathf.CeilToInt(upgradeCost);
+    }
 }

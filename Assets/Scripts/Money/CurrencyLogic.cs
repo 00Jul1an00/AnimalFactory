@@ -7,11 +7,6 @@ public abstract class CurrencyLogic : MonoBehaviour
 {
     public abstract int CurrencyCount { get; set; }
 
-
     protected abstract void DrawMoney();
-
-      
-    
-
 
 }

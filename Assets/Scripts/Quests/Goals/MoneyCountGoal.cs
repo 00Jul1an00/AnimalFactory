@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyCountGoal : MonoBehaviour
+public class MoneyCountGoal : QuestGoal
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private DollarsLogic _dollarsLogic;
+    public override int CurrentProgres { get => _dollarsLogic.CurrencyCount; protected set => base.CurrentProgres = value; }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        _dollarsLogic = FindObjectOfType<DollarsLogic>();
     }
 }

@@ -4,18 +4,21 @@ using System;
 public class Product : MonoBehaviour
 {
     [SerializeField] private float _maxDistance;
-    [SerializeField] private float _cost = 1;
+    [SerializeField] private int _cost;
     [HideInInspector] public Product PreviusProductOnBelt;
     [HideInInspector] public Product NextProductOnBelt;
 
     public float SpeedOnBelt { get; private set; }
-    public float Cost { get { return _cost; } set { if (value > 0) _cost = value; } }
+    public int Cost { get { return _cost; } set { if (value > 0) _cost = value; } }
 
     private bool _isStoped = false;
     private Rigidbody2D _rb;
 
     private void Start()
     {
+        if(_cost < 1)
+            _cost = 1;
+
         SpeedOnBelt = 1;
         _rb = GetComponent<Rigidbody2D>();
     } 
