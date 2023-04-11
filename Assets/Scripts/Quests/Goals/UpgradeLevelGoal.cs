@@ -7,6 +7,8 @@ public class UpgradeLevelGoal : QuestGoal
     [SerializeField] private BaseUpgrade _upgradeToCheck;
     [SerializeField] private bool _checkingTotalUpgradeLevel;
 
+    public override QuestGoalType GoalType => QuestGoalType.UpgradeLevel;
+
     public override int CurrentProgres
     {
         get

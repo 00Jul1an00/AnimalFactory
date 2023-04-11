@@ -41,8 +41,18 @@ public class Quest : MonoBehaviour
     private void ValidateGoal()
     {
         QuestGoal = GetComponent<QuestGoal>();
-        if (QuestGoal != null)
+           
+        if (QuestGoal != null && _questGoal == QuestGoal.GoalType)
+        {
             return;
+        }
+        else
+        {
+            UnityEditor.EditorApplication.delayCall += () =>
+            {
+                DestroyImmediate(QuestGoal);
+            };
+        }
 
         switch (_questGoal)
         {

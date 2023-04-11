@@ -9,6 +9,8 @@ public abstract class QuestGoal : MonoBehaviour
     
     private int _currentProgres;
 
+    public abstract QuestGoalType GoalType { get; }
+
     public virtual int CurrentProgres { get { return _currentProgres; } protected set { _currentProgres = value; } }
     public virtual int RequireProgres { get { return _requireProgres; } protected set { _requireProgres = value; } }
     public bool IsDone { get { return CurrentProgres >= RequireProgres; } protected set { IsDone = value; } }
