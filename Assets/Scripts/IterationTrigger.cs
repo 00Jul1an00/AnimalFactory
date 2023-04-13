@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class IterationTrigger : MonoBehaviour
 {
     [SerializeField] private float _productionDelay;
     [SerializeField] private Timer _timer;
 
-    private Product _productOnIteration;
-
+    public event Action ProductOnIteration;
+    public Product CurrentProductOnIteration { get; private set; }
     public float ProductionDelay 
     { 
         get { return _productionDelay; } 
@@ -29,23 +30,22 @@ public class IterationTrigger : MonoBehaviour
 
     private IEnumerator WaitforProductionDelay()
     {
-        _productOnIteration.StopProductOnBelt();
+        CurrentProductOnIteration.StopProductOnBelt();
 
         for (int i = 0; i < Timer.DURATION_SPLITING; i++)
         {
             yield return new WaitForSeconds(_productionDelay / Timer.DURATION_SPLITING);
         }
 
-        
-        _productOnIteration.MoveProductOnBelt();
-        
+        CurrentProductOnIteration.MoveProductOnBelt();        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.attachedRigidbody.TryGetComponent(out Product product))
-        { 
-            _productOnIteration = product;
+        {
+           CurrentProductOnIteration = product;
+           ProductOnIteration?.Invoke();
            StartCoroutine(WaitforProductionDelay());
            StartCoroutine(_timer.TimerAnimation());
         }
