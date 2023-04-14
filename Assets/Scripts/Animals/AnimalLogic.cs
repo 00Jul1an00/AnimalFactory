@@ -12,6 +12,9 @@ public class AnimalLogic : MonoBehaviour
 
     private void Start()
     {
+        //
+        _currentAnimal.Init();
+        //
         _spriteRenderer = GetComponent<SpriteRenderer>();
         RedrawSpite();
         ChangeProductivityStats();
@@ -19,10 +22,12 @@ public class AnimalLogic : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyUp(KeyCode.Q))
             ChangeAnimal(AnimalsData.Instance.GetAnimalByID(1));
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E))
             ChangeAnimal(_prevAnimal);
+        if (Input.GetKeyUp(KeyCode.S))
+            MergeAnimals(AnimalsData.Instance.GetAnimalByID(1).Quality);
     }
 
     private void OnEnable() => _iterationTrigger.ProductOnIteration += OnProductOnIteration;
@@ -32,23 +37,29 @@ public class AnimalLogic : MonoBehaviour
     {
         _prevAnimal = _currentAnimal;
         _currentAnimal = newAnimal;
+        //
+        _currentAnimal.Init();
+        //
         RedrawSpite();
         ChangeProductivityStats();
     }
 
-    public void MergeAnimals(AnimalSO animal)
+    public void MergeAnimals(AnimalQualitySO animal)
     {
-
+        IncreaseAnimalSpeed(animal);
+        IncreaseAnimalCost(animal);
     }
 
-    private void IncreaseAnimalSpeed()
+    private void IncreaseAnimalSpeed(AnimalQualitySO animal)
     {
-
+        _iterationTrigger.ProductionDelay += _currentAnimal.Speed;
+        _currentAnimal.IncreaseSpeed(animal.MergePower);
+        _iterationTrigger.ProductionDelay -= _currentAnimal.Speed;
     }
 
-    private void IncreaseAnimalCost()
+    private void IncreaseAnimalCost(AnimalQualitySO animal)
     {
-
+        _currentAnimal.IncreaseCost(animal.MergePower);
     }
 
     private void ChangeProductivityStats()
@@ -63,5 +74,5 @@ public class AnimalLogic : MonoBehaviour
 
     private void RedrawSpite() => _spriteRenderer.sprite = _currentAnimal.Sprite;
 
-    private void OnProductOnIteration() => _iterationTrigger.CurrentProductOnIteration.Cost += Mathf.CeilToInt(_currentAnimal.Cost);
+    private void OnProductOnIteration() => _iterationTrigger.CurrentProductOnIteration.Cost += Mathf.RoundToInt(_currentAnimal.Cost);
 }

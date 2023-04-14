@@ -15,7 +15,7 @@ public class IterationTrigger : MonoBehaviour
         get { return _productionDelay; } 
         set 
         {
-            if (value > 0)
+            if (value > 0 && _productionDelay >= 0.1f)
             {
                 _productionDelay = value;
                 _timer.AnimationDuration = _productionDelay;

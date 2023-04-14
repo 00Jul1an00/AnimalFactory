@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using UnityEngine;
 using System.Linq;
 using System;
@@ -9,13 +7,10 @@ public class AnimalsData : MonoBehaviour
 {
     [SerializeField] private List<AnimalSO> _animals;
 
-    //public ReadOnlyCollection<AnimalSO> Animals;
-
     public static AnimalsData Instance;
 
     private void Awake()
     {
-
         if (Instance == null)
         {
             Instance = this;

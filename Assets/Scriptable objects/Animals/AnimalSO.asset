@@ -7,14 +7,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e647923a9567343418c71c99e2743f3e, type: 3}
-  m_Name: cat3
+  m_Script: {fileID: 11500000, guid: 56e96470bb71db44484d635cdbb7e4df, type: 3}
+  m_Name: AnimalSO
   m_EditorClassIdentifier: 
   _animalQuality: 0
-  _sprite: {fileID: 21300000, guid: 5430b5412bcac5b4986be0a875a5e978, type: 3}
+  _sprite: {fileID: 0}
   _name: 
-  _id: 2
-  _speed: 0
-  _cost: 0
+  _id: 0
