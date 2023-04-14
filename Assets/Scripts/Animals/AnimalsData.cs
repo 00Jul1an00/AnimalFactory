@@ -14,7 +14,7 @@ public class AnimalsData : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            _animals = _animals.OrderBy(x => x.Id).ToList();
+            _animals = _animals.OrderBy(x => x.ID).ToList();
         }
         else
         {
@@ -26,7 +26,7 @@ public class AnimalsData : MonoBehaviour
 
     public AnimalSO GetAnimalByID(int id)
     {
-        var animalToReturn = _animals.Find(x => x.Id == id);
+        var animalToReturn = _animals.Find(x => x.ID == id);
 
         if (animalToReturn == null)
             throw new Exception("ID Does not Exist");

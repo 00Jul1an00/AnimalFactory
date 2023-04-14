@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7883878421216067734}
   - component: {fileID: 4164484228368282784}
-  - component: {fileID: 5603487072875514872}
   m_Layer: 0
   m_Name: Iteration
   m_TagString: Untagged
@@ -86,20 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5603487072875514872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1651805265464390364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 292af2c839d424841b59bd09b99892a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _currentAnimal: {fileID: 11400000, guid: 1b4aaffe999628d41a2e66f13e48cd49, type: 2}
-  _iterationTrigger: {fileID: 9016967816512847635}
 --- !u!1 &4943700071078969904
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,9 +96,10 @@ GameObject:
   - component: {fileID: 8382845359865880046}
   - component: {fileID: 5889884177757009841}
   - component: {fileID: 9016967816512847635}
-  - component: {fileID: 1267808114}
+  - component: {fileID: 651805179}
+  - component: {fileID: 1194384424}
   m_Layer: 0
-  m_Name: IterationTrigger 1
+  m_Name: IterationTrigger 3
   m_TagString: IterationTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4943700071078969904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01000011, y: 0, z: 0}
+  m_LocalPosition: {x: 0.01, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -147,7 +133,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06673646, y: -0.13460025}
+  m_Offset: {x: -0.20289838, y: -0.12725839}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -158,7 +144,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.0020785, y: 1.2692006}
+  m_Size: {x: 3.0591629, y: 1.2545168}
   m_EdgeRadius: 0
 --- !u!114 &9016967816512847635
 MonoBehaviour:
@@ -174,7 +160,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _productionDelay: 3
   _timer: {fileID: 0}
---- !u!114 &1267808114
+  _currentAnimal: {fileID: 0}
+  _spriteRenderer: {fileID: 4164484228368282784}
+--- !u!114 &651805179
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,7 +174,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8089163f3077b47b4c31e423872cd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeCost: 10
+  _upgradeCost: 20
   _upgradeCostMiltiply: 1.1
   _dollarsLogic: {fileID: 0}
-  _upgradeSpeedMultiply: 2
+  _upgradeSpeedMultiply: 3
+--- !u!114 &1194384424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943700071078969904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8089163f3077b47b4c31e423872cd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _upgradeCost: 30
+  _upgradeCostMiltiply: 1.1
+  _dollarsLogic: {fileID: 0}
+  _upgradeSpeedMultiply: 4

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class SpeedUpManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] _triggers = new GameObject[3];
-    [SerializeField] private IterationTrigger[] _itTriggers = new IterationTrigger[3];
+    [SerializeField] private Iteration[] _itTriggers = new Iteration[3];
 
     [SerializeField] private int _speedMultiplier;
     [SerializeField] private TextMeshProUGUI _countText;
@@ -23,7 +23,7 @@ public class SpeedUpManager : MonoBehaviour
         _triggers = GameObject.FindGameObjectsWithTag("IterationTrigger");
         for (int i = 0; i < _triggers.Length; i++)
         {
-            _itTriggers[i] = _triggers[i].GetComponent<IterationTrigger>();
+            _itTriggers[i] = _triggers[i].GetComponent<Iteration>();
         }
 
     }

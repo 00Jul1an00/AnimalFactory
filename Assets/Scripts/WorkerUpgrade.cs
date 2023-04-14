@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[RequireComponent(typeof(IterationTrigger))]
+[RequireComponent(typeof(Iteration))]
 public class WorkerUpgrade : BaseUpgrade
 {
     [Min(1)]
     [SerializeField] private float _upgradeSpeedMultiply;
-    private IterationTrigger _worker;
+    private Iteration _worker;
     public event Action WorkerUpgraded;
 
     private void Start()
     {
-        _worker = GetComponent<IterationTrigger>();
+        _worker = GetComponent<Iteration>();
     }
 
     protected override void UpgradeLogic()

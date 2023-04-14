@@ -1,47 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class AnimalLogic : MonoBehaviour
 {
-    [SerializeField] private AnimalSO _currentAnimal;
-    [SerializeField] private IterationTrigger _iterationTrigger;
-   
-    private SpriteRenderer _spriteRenderer;
-    private AnimalSO _prevAnimal;
+    [SerializeField] private AnimalSO _baseAnimal;
 
+    private float _cost;
+    private float _speed;
+
+    public AnimalSO BaseAnimal => _baseAnimal;
+    public Sprite Sprite => _baseAnimal.Sprite;
+    public float Cost => _cost;
+    public float Speed => _speed;
+
+    public event Action<float> SpeedChanged;
+
+    #region temp
     private void Start()
     {
-        //
-        _currentAnimal.Init();
-        //
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        RedrawSpite();
-        ChangeProductivityStats();
+        _baseAnimal.Quality.CalcStats();
+        _cost = _baseAnimal.Quality.Cost;
+        _speed = _baseAnimal.Quality.Speed;
     }
+    #endregion
 
-    private void Update()
+    public void AddToPlayerInventory()
     {
-        if (Input.GetKeyUp(KeyCode.Q))
-            ChangeAnimal(AnimalsData.Instance.GetAnimalByID(1));
-        if (Input.GetKeyUp(KeyCode.E))
-            ChangeAnimal(_prevAnimal);
-        if (Input.GetKeyUp(KeyCode.S))
-            MergeAnimals(AnimalsData.Instance.GetAnimalByID(1).Quality);
-    }
-
-    private void OnEnable() => _iterationTrigger.ProductOnIteration += OnProductOnIteration;
-    private void OnDisable() => _iterationTrigger.ProductOnIteration -= OnProductOnIteration;
-
-    public void ChangeAnimal(AnimalSO newAnimal)
-    {
-        _prevAnimal = _currentAnimal;
-        _currentAnimal = newAnimal;
-        //
-        _currentAnimal.Init();
-        //
-        RedrawSpite();
-        ChangeProductivityStats();
+        _baseAnimal.Quality.CalcStats();
+        _cost = _baseAnimal.Quality.Cost;
+        _speed = _baseAnimal.Quality.Speed;
     }
 
     public void MergeAnimals(AnimalQualitySO animal)
@@ -52,27 +39,22 @@ public class AnimalLogic : MonoBehaviour
 
     private void IncreaseAnimalSpeed(AnimalQualitySO animal)
     {
-        _iterationTrigger.ProductionDelay += _currentAnimal.Speed;
-        _currentAnimal.IncreaseSpeed(animal.MergePower);
-        _iterationTrigger.ProductionDelay -= _currentAnimal.Speed;
+        float prevSpeed = _speed;
+
+        if (_speed + animal.MergePower < _baseAnimal.Quality.MaxSpeed)
+            _speed += animal.MergePower;
+        else
+            _speed = _baseAnimal.Quality.MaxSpeed;
+
+        SpeedChanged?.Invoke(prevSpeed);
     }
 
     private void IncreaseAnimalCost(AnimalQualitySO animal)
     {
-        _currentAnimal.IncreaseCost(animal.MergePower);
+        if (_cost + animal.MergePower < _baseAnimal.Quality.MaxCost)
+            _cost += animal.MergePower;
+        else
+            _cost = _baseAnimal.Quality.MergePower;
+
     }
-
-    private void ChangeProductivityStats()
-    {
-        if(_prevAnimal != null)
-        {
-            _iterationTrigger.ProductionDelay += _prevAnimal.Speed;
-        }    
-
-        _iterationTrigger.ProductionDelay -= _currentAnimal.Speed;
-    }
-
-    private void RedrawSpite() => _spriteRenderer.sprite = _currentAnimal.Sprite;
-
-    private void OnProductOnIteration() => _iterationTrigger.CurrentProductOnIteration.Cost += Mathf.RoundToInt(_currentAnimal.Cost);
 }

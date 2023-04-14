@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f55652b788e74c49badc9dd1c83ba1d, type: 3}
   m_Name: Mythical
   m_EditorClassIdentifier: 
-  _rarity: 0
-  _mergePower: 0
-  _minSpeed: 0
-  _maxSpeed: 0
-  _minCost: 0
-  _maxCost: 0
+  _rarity: 5
+  _mergePower: 2
+  _minSpeed: 5
+  _maxSpeed: 10
+  _minCost: 5
+  _maxCost: 10
