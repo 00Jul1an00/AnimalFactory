@@ -14,7 +14,8 @@ public class AnimalSO : ScriptableObject
 
     private AnimalQualitySO _quality;
 
-    public AnimalQualitySO Quality => _quality;
+    public AnimalQualitySO BaseQuality => _quality;
+    public AnimalQuality Quility => _animalQuality;
     public Sprite Sprite => _sprite;
     public int ID => _id;
 
