@@ -18,6 +18,7 @@ public class AnimalSO : ScriptableObject
     public AnimalQuality Quility => _animalQuality;
     public Sprite Sprite => _sprite;
     public int ID => _id;
+    public string Name => _name;
 
     private void OnValidate()
     {

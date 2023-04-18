@@ -10,14 +10,25 @@ public class InventoryItem : MonoBehaviour
     [SerializeField] private Image _itemSprite;
     [SerializeField] private TMP_Text _costStat;
     [SerializeField] private TMP_Text _speedStat;
+    [SerializeField] private TMP_Text _name;
 
-    private void Init(AnimalLogic animal)
+    [SerializeField] private AnimalLogic _animal;
+
+    private void Start()
     {
-        _itemSprite.sprite = animal.Sprite;
-        _costStat.text = animal.Cost.ToString(); 
-        _speedStat.text = animal.Speed.ToString(); 
+        Init();
+    }
 
-        AnimalQuality quality = animal.BaseAnimal.Quility;
+    public AnimalLogic Animal => _animal;
+
+    private void Init()
+    {
+        _itemSprite.sprite = _animal.Sprite;
+        _costStat.text = _animal.Cost.ToString();
+        _speedStat.text = _animal.Speed.ToString();
+        _name.text = _animal.BaseAnimal.Name;
+
+        AnimalQuality quality = _animal.BaseAnimal.Quility;
 
         switch (quality)
         {
@@ -34,11 +45,19 @@ public class InventoryItem : MonoBehaviour
                 _background.color = Color.yellow;
                 return;
         }
-
     }
 
-    public void AddItemToInventory(AnimalLogic animal)
+    public void AddItemToInventory()
     {
-        Init(animal);
+        Init();
+    }
+
+    public void DrawItem(Image background, Image itemSprite, TMP_Text costStat, TMP_Text speedStat, TMP_Text name)
+    {
+        background.sprite = _background.sprite;
+        itemSprite.sprite = _itemSprite.sprite;
+        costStat.text = _costStat.text;
+        speedStat.text = _speedStat.text;
+        name.text = _name.text;
     }
 }

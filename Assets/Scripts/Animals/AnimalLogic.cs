@@ -4,7 +4,6 @@ using System;
 public class AnimalLogic : MonoBehaviour
 {
     [SerializeField] private AnimalSO _baseAnimal;
-    [SerializeField] private InventoryItem _itemPrefab;
 
     private float _cost;
     private float _speed;
@@ -31,7 +30,6 @@ public class AnimalLogic : MonoBehaviour
         _cost = _baseAnimal.BaseQuality.Cost;
         _speed = _baseAnimal.BaseQuality.Speed;
 
-        _itemPrefab.AddItemToInventory(this);
     }
 
     public void MergeAnimals(AnimalQualitySO animal)
