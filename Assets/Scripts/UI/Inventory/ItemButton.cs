@@ -27,7 +27,7 @@ public class ItemButton : MonoBehaviour
     {
         if(!_isMenuOpened)
         {
-            _itemMenu.gameObject.SetActive(true);            
+            _itemMenu.gameObject.SetActive(true);
             _isMenuOpened = true;
             ItemMenuOpened?.Invoke(_item);
         }
@@ -39,7 +39,5 @@ public class ItemButton : MonoBehaviour
         {
             ItemForMergeSelected?.Invoke(_item);
         }
-
-        
     }
 }

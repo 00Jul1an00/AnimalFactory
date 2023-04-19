@@ -11,6 +11,7 @@ public class Iteration : MonoBehaviour
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
     private Product _currentProductOnIteration;
+    public AnimalLogic CurrentAnimal => _currentAnimal;
 
     public float ProductionDelay
     {
