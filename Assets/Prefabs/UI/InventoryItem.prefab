@@ -95,7 +95,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 794e747218e012c4cac14ccfddf4b78b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _debug: {fileID: 0}
   _background: {fileID: 3660952068943284345}
   _itemSprite: {fileID: 4702455387056792950}
   _costStat: {fileID: 2179239127681117472}
@@ -170,6 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 5218758257446978983}
+  _item: {fileID: 7018426493312713024}
 --- !u!1 &3983081861411564305
 GameObject:
   m_ObjectHideFlags: 0

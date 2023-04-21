@@ -12,12 +12,7 @@ public class InventoryItem : MonoBehaviour
     [SerializeField] private TMP_Text _speedStat;
     [SerializeField] private TMP_Text _name;
 
-    [SerializeField] private AnimalLogic _animal;
-
-    private void Start()
-    {
-        Init();
-    }
+    private AnimalLogic _animal;
 
     public AnimalLogic Animal => _animal;
 
@@ -47,8 +42,9 @@ public class InventoryItem : MonoBehaviour
         }
     }
 
-    public void AddItemToInventory()
+    public void AddItemToInventory(AnimalLogic animalLogic)
     {
+        _animal = animalLogic;
         Init();
     }
 

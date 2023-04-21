@@ -1,10 +1,9 @@
 using UnityEngine;
 using System;
 
-public class AnimalLogic : MonoBehaviour
+public class AnimalLogic
 {
-    [SerializeField] private AnimalSO _baseAnimal;
-
+    private AnimalSO _baseAnimal;
     private float _cost;
     private float _speed;
 
@@ -15,21 +14,13 @@ public class AnimalLogic : MonoBehaviour
 
     public event Action<float> SpeedChanged;
 
-    #region temp
-    private void Start()
+
+    public AnimalLogic(AnimalSO baseAnimal)
     {
+        _baseAnimal = baseAnimal;
         _baseAnimal.BaseQuality.CalcStats();
         _cost = _baseAnimal.BaseQuality.Cost;
         _speed = _baseAnimal.BaseQuality.Speed;
-    }
-    #endregion
-
-    public void AddToPlayerInventory()
-    {
-        _baseAnimal.BaseQuality.CalcStats();
-        _cost = _baseAnimal.BaseQuality.Cost;
-        _speed = _baseAnimal.BaseQuality.Speed;
-
     }
 
     public void MergeAnimals(AnimalQualitySO animal)

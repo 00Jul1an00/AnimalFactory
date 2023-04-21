@@ -5,8 +5,8 @@ using System;
 public class ItemButton : MonoBehaviour
 {
     [SerializeField] private Button _button;
+    [SerializeField] private InventoryItem _item;
     private InventoryItemMenu _itemMenu;
-    private InventoryItem _item;
 
     private static bool _isMenuOpened;
 
@@ -16,7 +16,6 @@ public class ItemButton : MonoBehaviour
     private void Start()
     {
         _itemMenu = FindObjectOfType<InventoryItemMenu>(true);
-        _item = GetComponent<InventoryItem>();
     }
 
     private void OnEnable() => _button.onClick.AddListener(OpenItemMenu);

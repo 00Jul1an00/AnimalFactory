@@ -39,6 +39,9 @@ public class StartProductionPoint : MonoBehaviour
 
     private void LinkProducts()
     {
+        if (_productPool.Pool.LastActiveIndex == 0)
+            return;
+
         _previusSpawnProduct = _currentSpawnProduct;
         _currentSpawnProduct = _productPool.Pool.GetLastSpawnedObject();
         

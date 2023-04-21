@@ -96,10 +96,9 @@ GameObject:
   - component: {fileID: 8382845359865880046}
   - component: {fileID: 5889884177757009841}
   - component: {fileID: 9016967816512847635}
-  - component: {fileID: 651805179}
   - component: {fileID: 1194384424}
   m_Layer: 0
-  m_Name: IterationTrigger 3
+  m_Name: IterationTrigger
   m_TagString: IterationTrigger
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,24 +159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _productionDelay: 3
   _timer: {fileID: 0}
-  _currentAnimal: {fileID: 0}
   _spriteRenderer: {fileID: 4164484228368282784}
---- !u!114 &651805179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4943700071078969904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be8089163f3077b47b4c31e423872cd2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _upgradeCost: 20
-  _upgradeCostMiltiply: 1.1
-  _dollarsLogic: {fileID: 0}
-  _upgradeSpeedMultiply: 3
 --- !u!114 &1194384424
 MonoBehaviour:
   m_ObjectHideFlags: 0

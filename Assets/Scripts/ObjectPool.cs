@@ -45,7 +45,12 @@ public class ObjectPool<T> where T : MonoBehaviour
         {
             _spawnedList[LastActiveIndex++].gameObject.SetActive(true);
 
-            if (LastActiveIndex >= _spawnedList.Count)
+            if(LastActiveIndex >= _spawnedList.Count && _isDynamic)
+            {
+                Debug.Log("Object Pool capacity was increased");
+                IncreasePoolCapacity();
+            }
+            else if (LastActiveIndex >= _spawnedList.Count)
             {
                 Debug.Log("all objects in pull are active, index was reseted");
                 LastActiveIndex = 0;
@@ -75,10 +80,9 @@ public class ObjectPool<T> where T : MonoBehaviour
 
     public T GetLastSpawnedObject()
     {
-        return _spawnedList[LastActiveIndex];
+        return _spawnedList[LastActiveIndex - 1];
     }
 
-    //TODO add dynamic increase option
     public void IncreasePoolCapacity()
     {
         _SpawnCount *= 2;

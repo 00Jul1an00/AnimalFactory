@@ -7,9 +7,9 @@ public class Iteration : MonoBehaviour
 {
     [SerializeField] private float _productionDelay;
     [SerializeField] private Timer _timer;
-    [SerializeField] private AnimalLogic _currentAnimal;
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
+    private AnimalLogic _currentAnimal;
     private Product _currentProductOnIteration;
     public AnimalLogic CurrentAnimal => _currentAnimal;
 
@@ -26,7 +26,6 @@ public class Iteration : MonoBehaviour
         }
     }
 
-    private void OnEnable() => _currentAnimal.SpeedChanged += OnSpeedChanged;
     private void OnDisable() => _currentAnimal.SpeedChanged -= OnSpeedChanged;
 
     public void ChangeAnimal(AnimalLogic animal)
@@ -39,11 +38,18 @@ public class Iteration : MonoBehaviour
         RedrawSprite();
     }
 
+    private void SetStartAnimal(AnimalLogic animal)
+    {
+        _currentAnimal = animal; 
+        _currentAnimal.SpeedChanged += OnSpeedChanged;
+        _productionDelay -= _currentAnimal.Speed;
+        _timer.AnimationDuration = _productionDelay;
+        RedrawSprite();
+    }
+
     private void Start()
     {
-        _timer.AnimationDuration = _productionDelay;
-        _productionDelay -= _currentAnimal.Speed;
-        RedrawSprite();
+        SetStartAnimal(new AnimalLogic(AnimalsData.Instance.GetAnimalByID(1)));
     }
 
     private IEnumerator WaitforProductionDelay()
