@@ -37,6 +37,5 @@ public class ChangeWorker : MonoBehaviour
     private void OnItemMenuOpened(InventoryItem item)
     {
         _selectedItem = item;
-        print(item.name);
     }
 }

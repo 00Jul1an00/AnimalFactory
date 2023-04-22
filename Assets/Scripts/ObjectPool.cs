@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObjectPool<T> where T : MonoBehaviour
 {
     private T _prefab;
-    private int _SpawnCount;
+    private int _spawnCount;
     private List<T> _spawnedList;
     private Vector3 _startPrefabPosition;
     private bool _isDynamic;
@@ -20,9 +20,9 @@ public class ObjectPool<T> where T : MonoBehaviour
     public ObjectPool(T prefab, int spawnCount, bool isDynamic = false)
     {
         _prefab = prefab;
-        _SpawnCount = spawnCount;
+        _spawnCount = spawnCount;
         _isDynamic = isDynamic;
-        _spawnedList = new List<T>(_SpawnCount);
+        _spawnedList = new List<T>(_spawnCount);
         SpawnedList = _spawnedList;
     }
 
@@ -32,7 +32,7 @@ public class ObjectPool<T> where T : MonoBehaviour
         _prefabRotation = rotation;
         _prefabContainer = container;
 
-        for (int i = 0; i < _SpawnCount; i++)
+        for (int i = 0; i < _spawnCount; i++)
             SpawnObject();
     }
 
@@ -64,7 +64,12 @@ public class ObjectPool<T> where T : MonoBehaviour
         }
     }
 
-    public void DeactivateObject(MonoBehaviour obj)
+    public void ActivateConcreateObject(T obj)
+    {
+        _spawnedList[GetObjectIndex(obj)].gameObject.SetActive(true);
+    }
+
+    public void DeactivateObject(T obj)
     {
         _spawnedList[GetObjectIndex(obj)].gameObject.SetActive(false);
         obj.gameObject.transform.position = _startPrefabPosition;
@@ -80,14 +85,17 @@ public class ObjectPool<T> where T : MonoBehaviour
 
     public T GetLastSpawnedObject()
     {
+        if (LastActiveIndex == 0)
+            return _spawnedList[_spawnCount - 1];
+
         return _spawnedList[LastActiveIndex - 1];
     }
 
     public void IncreasePoolCapacity()
     {
-        _SpawnCount *= 2;
+        _spawnCount *= 2;
 
-        for(int i = _spawnedList.Count; i < _SpawnCount; i++)
+        for(int i = _spawnedList.Count; i < _spawnCount; i++)
             SpawnObject();
     }
 
@@ -95,7 +103,7 @@ public class ObjectPool<T> where T : MonoBehaviour
     {
         for (int i = 0; i < _spawnedList.Count; i++)
         {
-            if (_spawnedList[i] == obj)
+            if (_spawnedList[i].Equals(obj))
                 return i;
         }
 

@@ -15,11 +15,17 @@ public class ItemsInInventoryObjectPool : MonoBehaviour
         _pool = ActivateObjectPool();
     }
 
-    public void ActivateItemInObjectPool(AnimalLogic animalLogic)
+    public InventoryItem ActivateItemInObjectPool(AnimalLogic animalLogic)
     {
         _pool.ActivateObject();
         var item = _pool.GetLastSpawnedObject();
-        item.AddItemToInventory(animalLogic);
+        item.InitItem(animalLogic);
+        return item;
+    }
+
+    public void ActivateConcreateItem(InventoryItem item)
+    {
+        _pool.ActivateConcreateObject(item);
     }
 
     private ObjectPool<InventoryItem> ActivateObjectPool()
@@ -28,5 +34,10 @@ public class ItemsInInventoryObjectPool : MonoBehaviour
         ObjectPool<InventoryItem> pool = new(_itemPrefab, _inventoryCapacity, true);
         pool.Init(Vector2.zero, Quaternion.identity, _container);
         return pool;
+    }
+
+    public void DeactivateItemInObjectPool(InventoryItem item)
+    {
+        _pool.DeactivateObject(item);
     }
 }

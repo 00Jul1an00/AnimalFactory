@@ -18,10 +18,7 @@ public class InventoryItem : MonoBehaviour
 
     private void Init()
     {
-        _itemSprite.sprite = _animal.Sprite;
-        _costStat.text = _animal.Cost.ToString();
-        _speedStat.text = _animal.Speed.ToString();
-        _name.text = _animal.BaseAnimal.Name;
+        ReDrawStats();
 
         AnimalQuality quality = _animal.BaseAnimal.Quility;
 
@@ -42,7 +39,15 @@ public class InventoryItem : MonoBehaviour
         }
     }
 
-    public void AddItemToInventory(AnimalLogic animalLogic)
+    public void ReDrawStats()
+    {
+        _itemSprite.sprite = _animal.Sprite;
+        _costStat.text = _animal.Cost.ToString();
+        _speedStat.text = _animal.Speed.ToString();
+        _name.text = _animal.BaseAnimal.Name;
+    }
+
+    public void InitItem(AnimalLogic animalLogic)
     {
         _animal = animalLogic;
         Init();
@@ -50,10 +55,46 @@ public class InventoryItem : MonoBehaviour
 
     public void DrawItem(Image background, Image itemSprite, TMP_Text costStat, TMP_Text speedStat, TMP_Text name)
     {
+        ReDrawStats();
         background.sprite = _background.sprite;
         itemSprite.sprite = _itemSprite.sprite;
         costStat.text = _costStat.text;
         speedStat.text = _speedStat.text;
         name.text = _name.text;
+    }
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public override bool Equals(object other)
+    {
+        var otherItem = (InventoryItem)other;
+        return this.Animal == otherItem.Animal;
+    }
+
+    public static bool operator ==(InventoryItem a, InventoryItem b)
+    {
+        if (System.Object.ReferenceEquals(a, b))
+            return true;
+
+        if ((a is null) || (b is null))
+            return false;
+
+        return a.Animal == b.Animal;
+    }
+    public static bool operator !=(InventoryItem a, InventoryItem b)
+    {
+        if (System.Object.ReferenceEquals(a, b))
+            return false;
+
+        if ((a is null) || (b is null))
+            return true;
+
+        if(a.Animal == b.Animal)
+            return false;
+
+        return a.Animal != b.Animal;
     }
 }

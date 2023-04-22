@@ -32,7 +32,12 @@ public class InventoryItemMenu : MonoBehaviour
     private void OnItemMenuOpened(InventoryItem item)
     {
         _selectedItem = item;
-        item.DrawItem(_background, _itemSprite, _costStat, _speedStat, _name);
+        RedrawItemInMenu();
+    }
+
+    public void RedrawItemInMenu()
+    {
+        _selectedItem.DrawItem(_background, _itemSprite, _costStat, _speedStat, _name);
     }
 
     private void DrawMergeMenu() => _mergeMenu.DrawFirstItem(_selectedItem);

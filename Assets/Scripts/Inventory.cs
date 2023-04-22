@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private int _inventoryCapacity;
+    [SerializeField] private int _inventoryStartCapacity;
     [SerializeField] private ItemsInInventoryObjectPool _mainInventoryObjectPool;
     [SerializeField] private ItemsInInventoryObjectPool _mergeInventoryObjectPool;
     
-    private List<AnimalLogic> _inventory = new();
+    private List<InventoryItem> _inventory = new();
 
     private void Start()
     {
@@ -19,18 +19,53 @@ public class Inventory : MonoBehaviour
     public void AddAnimalToInventory(AnimalSO animal)
     {
         var animalLogic = new AnimalLogic(animal);
-        _inventory.Add(animalLogic);
-        ActivateItem(animalLogic);
+        var item = ActivateItem(animalLogic);
+        _inventory.Add(item);
     }
 
-    public void RemoveItemFromInventoru(AnimalLogic animal)
+    public void RemoveItemFromInventory(InventoryItem item)
     {
-        _inventory.Remove(animal);
+        _mergeInventoryObjectPool.DeactivateItemInObjectPool(item);
+        _mainInventoryObjectPool.DeactivateItemInObjectPool(item);
+        _inventory.Remove(item);
     }
 
-    private void ActivateItem(AnimalLogic animalLogic)
+    private InventoryItem ActivateItem(AnimalLogic animalLogic)
     {
+        InventoryItem itemToReturn;
         _mainInventoryObjectPool.ActivateItemInObjectPool(animalLogic);
-        _mergeInventoryObjectPool.ActivateItemInObjectPool(animalLogic);
+        itemToReturn = _mergeInventoryObjectPool.ActivateItemInObjectPool(animalLogic);
+        return itemToReturn;
     } 
+
+    public void DrawItemsInMergeMenu(InventoryItem selectedItem)
+    {
+        foreach (var item in _inventory)
+        {
+            item.ReDrawStats();
+
+            if (item == selectedItem)
+                _mergeInventoryObjectPool.DeactivateItemInObjectPool(item);
+
+        }    
+    }
+
+    public void OnMergeMenuClose(InventoryItem selectedItem)
+    {
+        foreach (var item in _inventory)
+        {
+            item.ReDrawStats();
+
+            if (item == selectedItem)
+                _mergeInventoryObjectPool.ActivateConcreateItem(item);
+        }    
+    }
+
+    private void LoadInventory() 
+    {
+        foreach (var item in _inventory)
+            ActivateItem(item.Animal);
+    }
+
+    private void SaveInventory() { }
 }
