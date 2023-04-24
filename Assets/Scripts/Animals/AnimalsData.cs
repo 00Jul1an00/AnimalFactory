@@ -33,4 +33,11 @@ public class AnimalsData : MonoBehaviour
         else
             return animalToReturn;
     }
+
+    public AnimalSO GetRandAnimalByQuality(AnimalQuality quality)
+    {
+        var qualityAnimals = _baseAnimals.Where(a => a.Quility == quality).ToArray();
+        int rand = UnityEngine.Random.Range(0, qualityAnimals.Length - 1);
+        return qualityAnimals[rand];
+    }
 }
