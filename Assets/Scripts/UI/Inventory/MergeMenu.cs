@@ -24,11 +24,12 @@ public class MergeMenu : MonoBehaviour
     [SerializeField] private Slider _speedSlider;
     [SerializeField] private Slider _speedUpgradeSlider;
     [SerializeField] private Slider _costUpgradeSlider;
-    [SerializeField] private GameObject _mergeInventory;
     [SerializeField] private Button _secondAnimalButton;
     [SerializeField] private Button _closeMergeInventoryButton;
     [SerializeField] private Inventory _inventory;
+    [SerializeField] private Canvas _inventoryCanvas;
 
+    private int _startCanvasSorting;
     private InventoryItem _firstItem;
     private InventoryItem _secondItem;
 
@@ -37,6 +38,8 @@ public class MergeMenu : MonoBehaviour
         ItemButton.ItemForMergeSelected += OnSelectedSecondAnimal;
         _secondAnimalButton.onClick.AddListener(ActivateMergeMenu);
         _closeMergeInventoryButton.onClick.AddListener(OnMergeMenuClose);
+
+        _startCanvasSorting = _inventoryCanvas.sortingOrder;
     }
 
     private void OnDisable()
@@ -86,7 +89,7 @@ public class MergeMenu : MonoBehaviour
     private void OnSelectedSecondAnimal(InventoryItem item)
     {
         DrawSecondItem(item);
-        _mergeInventory.SetActive(false);
+        _inventoryCanvas.sortingOrder = _startCanvasSorting;
     }
 
     private void OnMergeMenuClose()
@@ -96,7 +99,7 @@ public class MergeMenu : MonoBehaviour
 
     private void ActivateMergeMenu()
     {
-        _mergeInventory.SetActive(true);
+        _inventoryCanvas.sortingOrder = 200;
         _inventory.DrawItemsInMergeMenu(_firstItem);
     }
 

@@ -14,6 +14,6 @@ public class ProductPool : MonoBehaviour
     {
         Pool = new ObjectPool<Product>(_productPrefab, _poolCapacity);
         Pool.Init(transform.position, Quaternion.identity, transform);
-        _productUpgrade.FillUpListWithProducts(Pool.SpawnedList);
+        _productUpgrade.FillProductList(Pool.SpawnedList);
     }
 }

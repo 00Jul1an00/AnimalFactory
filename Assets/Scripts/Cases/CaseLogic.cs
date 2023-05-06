@@ -5,9 +5,14 @@ public class CaseLogic : MonoBehaviour
 {
     [SerializeField] private Inventory _inventory;
     [SerializeField] private CaseSO _caseSO;
+    [SerializeField] private AddChancePanel _addChancePanel;
 
     private List<InventoryItem> _itemsToDelete = new();
     private int _chanceImprove;
+
+    private void OnEnable() => ItemButton.ItemForChanceImproveSelected += ImproveDropChance;
+
+    private void OnDisable() => ItemButton.ItemForChanceImproveSelected += ImproveDropChance;
 
     private void OpenCase()
     {
@@ -17,9 +22,9 @@ public class CaseLogic : MonoBehaviour
     private void GiveRandReward()
     {
         AnimalQuality rewardQuality = CalcRewardQuality(Random.Range(0, 100) + _chanceImprove);
-        _chanceImprove = 0;
         AnimalSO reward = AnimalsData.Instance.GetRandAnimalByQuality(rewardQuality);
         print(rewardQuality);
+        ResetChanceImprove();
         //_inventory.AddAnimalToInventory(reward);
     }
 
@@ -47,6 +52,12 @@ public class CaseLogic : MonoBehaviour
         {
             return AnimalQuality.Legendary;
         }
+    }
+
+    public void ResetChanceImprove()
+    {
+        _chanceImprove = 0;
+        _itemsToDelete = new();
     }
 
     //debug

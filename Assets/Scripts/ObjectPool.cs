@@ -91,7 +91,7 @@ public class ObjectPool<T> where T : MonoBehaviour
         return _spawnedList[LastActiveIndex - 1];
     }
 
-    public void IncreasePoolCapacity()
+    private void IncreasePoolCapacity()
     {
         _spawnCount *= 2;
 
@@ -108,6 +108,37 @@ public class ObjectPool<T> where T : MonoBehaviour
         }
 
         return -1;
+    }
+
+    public void ClearPool()
+    {
+        foreach (T obj in _spawnedList)
+            UnityEngine.Object.Destroy(obj);
+    }
+
+    public void ChangeSpawnList(List<T> newSpawnList)
+    {
+        if(newSpawnList.Capacity > _spawnCount)
+            newSpawnList.Capacity = _spawnCount;
+
+        int newListCapacity = 0;
+
+        for(int i = 0; i < _spawnedList.Count; i++)
+        {
+            if (newSpawnList[i] == null)
+                return;
+
+            newListCapacity++;
+            newSpawnList[i].transform.SetParent(_prefabContainer);
+            newSpawnList[i].transform.position = _startPrefabPosition;
+            newSpawnList[i].enabled = _spawnedList[i].enabled;
+            _spawnedList[i] = newSpawnList[i];
+        }
+
+        for(int i = 0; i < _spawnCount - newListCapacity; i++)
+        {
+            SpawnObject();
+        }
     }
 
     private void SpawnObject()

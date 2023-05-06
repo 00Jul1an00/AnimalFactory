@@ -6,6 +6,7 @@ using TMPro;
 
 public class InventoryItem : MonoBehaviour
 {
+    [SerializeField] private Image _outLine;
     [SerializeField] private Image _background;
     [SerializeField] private Image _itemSprite;
     [SerializeField] private TMP_Text _costStat;
@@ -19,6 +20,7 @@ public class InventoryItem : MonoBehaviour
     private void Init()
     {
         ReDrawStats();
+        DisableOutline();
 
         AnimalQuality quality = _animal.BaseAnimal.Quility;
 
@@ -39,6 +41,8 @@ public class InventoryItem : MonoBehaviour
         }
     }
 
+    public void EnableOutline() => _outLine.color = new Color(_outLine.color.r, _outLine.color.g, _outLine.color.b, 1);
+    public void DisableOutline() => _outLine.color = new Color(_outLine.color.r, _outLine.color.g, _outLine.color.b, 0);
     public void ReDrawStats()
     {
         _itemSprite.sprite = _animal.Sprite;
