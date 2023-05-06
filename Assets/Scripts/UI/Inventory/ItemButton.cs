@@ -22,6 +22,7 @@ public class ItemButton : MonoBehaviour
 
     private void OnDisable() => _button.onClick.RemoveListener(OpenItemMenu);
 
+    //potential bug
     private void OpenItemMenu()
     {
         if(!_isMenuOpened)

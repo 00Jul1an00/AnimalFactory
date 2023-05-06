@@ -36,8 +36,8 @@ public class AnimalsData : MonoBehaviour
 
     public AnimalSO GetRandAnimalByQuality(AnimalQuality quality)
     {
-        var qualityAnimals = _baseAnimals.Where(a => a.Quility == quality).ToArray();
-        int rand = UnityEngine.Random.Range(0, qualityAnimals.Length - 1);
-        return qualityAnimals[rand];
+        var animalsByQuality = _baseAnimals.Where(a => a.Quility == quality).ToArray();
+        int rand = UnityEngine.Random.Range(0, animalsByQuality.Length - 1);
+        return animalsByQuality[rand];
     }
 }
