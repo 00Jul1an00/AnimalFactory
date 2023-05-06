@@ -9,10 +9,12 @@ public class ItemsInInventoryObjectPool : MonoBehaviour
     [SerializeField] private int _inventoryCapacity;
 
     private ObjectPool<InventoryItem> _pool;
+    public List<InventoryItem> ItemsInPool { get; private set; }
 
     private void Start()
     {
         _pool = ActivateObjectPool();
+        ItemsInPool = _pool.SpawnedList;
     }
 
     public InventoryItem ActivateItemInObjectPool(AnimalLogic animalLogic)

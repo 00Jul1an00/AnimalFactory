@@ -9,7 +9,7 @@ public class ProductUpgrade : BaseUpgrade
 
     private List<Product> _products;
 
-    public void FillUpListWithProducts(List<Product> products)
+    public void FillProductList(List<Product> products)
     {
         if(products != null)
             _products = products;

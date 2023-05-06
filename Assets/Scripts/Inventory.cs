@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private int _inventoryStartCapacity;
-    [SerializeField] private ItemsInInventoryObjectPool _mainInventoryObjectPool;
-    [SerializeField] private ItemsInInventoryObjectPool _mergeInventoryObjectPool;
-    
+    [SerializeField] private ItemsInInventoryObjectPool _inventoryObjectPool;
+
     private List<InventoryItem> _inventory = new();
 
     private void Start()
@@ -25,18 +23,14 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItemFromInventory(InventoryItem item)
     {
-        _mergeInventoryObjectPool.DeactivateItemInObjectPool(item);
-        _mainInventoryObjectPool.DeactivateItemInObjectPool(item);
+        _inventoryObjectPool.DeactivateItemInObjectPool(item);
         _inventory.Remove(item);
     }
 
     private InventoryItem ActivateItem(AnimalLogic animalLogic)
     {
-        InventoryItem itemToReturn;
-        _mainInventoryObjectPool.ActivateItemInObjectPool(animalLogic);
-        itemToReturn = _mergeInventoryObjectPool.ActivateItemInObjectPool(animalLogic);
-        return itemToReturn;
-    } 
+        return _inventoryObjectPool.ActivateItemInObjectPool(animalLogic);
+    }
 
     public void DrawItemsInMergeMenu(InventoryItem selectedItem)
     {
@@ -45,9 +39,9 @@ public class Inventory : MonoBehaviour
             item.ReDrawStats();
 
             if (item == selectedItem)
-                _mergeInventoryObjectPool.DeactivateItemInObjectPool(item);
+                _inventoryObjectPool.DeactivateItemInObjectPool(item);
 
-        }    
+        }
     }
 
     public void OnMergeMenuClose(InventoryItem selectedItem)
@@ -57,11 +51,11 @@ public class Inventory : MonoBehaviour
             item.ReDrawStats();
 
             if (item == selectedItem)
-                _mergeInventoryObjectPool.ActivateConcreateItem(item);
-        }    
+                _inventoryObjectPool.ActivateConcreateItem(item);
+        }
     }
 
-    private void LoadInventory() 
+    private void LoadInventory()
     {
         foreach (var item in _inventory)
             ActivateItem(item.Animal);

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 733366282780bb149a58ddbbaa202f15, type: 3}
   m_Name: Common
   m_EditorClassIdentifier: 
-  _commonDropChance: 0
-  _rareDropChance: 0
-  _mythicalDropChance: 0
+  _commonDropChance: 60
+  _rareDropChance: 30
+  _mythicalDropChance: 8

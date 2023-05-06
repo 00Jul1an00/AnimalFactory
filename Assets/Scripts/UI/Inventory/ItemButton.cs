@@ -6,34 +6,34 @@ public class ItemButton : MonoBehaviour
 {
     [SerializeField] private Button _button;
     [SerializeField] private InventoryItem _item;
+    
     private InventoryItemMenu _itemMenu;
-
-    private static bool _isMenuOpened;
+    private AddChancePanel _addChancePanel;
 
     public static event Action<InventoryItem> ItemForMergeSelected;
     public static event Action<InventoryItem> ItemMenuOpened;
+    public static event Action<InventoryItem> ItemForChanceImproveSelected;
 
     private void Start()
     {
         _itemMenu = FindObjectOfType<InventoryItemMenu>(true);
+        _addChancePanel = FindObjectOfType<AddChancePanel>(true);
     }
 
     private void OnEnable() => _button.onClick.AddListener(OpenItemMenu);
 
     private void OnDisable() => _button.onClick.RemoveListener(OpenItemMenu);
 
-    //potential bug
     private void OpenItemMenu()
     {
-        if(!_isMenuOpened)
+        if(_addChancePanel.isActiveAndEnabled)
         {
-            _itemMenu.gameObject.SetActive(true);
-            _isMenuOpened = true;
-            ItemMenuOpened?.Invoke(_item);
+            ItemForChanceImproveSelected?.Invoke(_item);
         }
         else if (!_itemMenu.isActiveAndEnabled)
         {
-            _isMenuOpened = false;
+            _itemMenu.gameObject.SetActive(true);
+            ItemMenuOpened?.Invoke(_item);
         }
         else
         {

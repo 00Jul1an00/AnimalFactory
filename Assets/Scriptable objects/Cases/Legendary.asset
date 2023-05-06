@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Legendary
   m_EditorClassIdentifier: 
   _commonDropChance: 0
-  _rareDropChance: 0
-  _mythicalDropChance: 0
+  _rareDropChance: 20
+  _mythicalDropChance: 40
