@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum AnimalQuality
 {
+    Default,
     Common,
     Rare,
     Mythical,

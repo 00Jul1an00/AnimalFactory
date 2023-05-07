@@ -8,7 +8,7 @@ public class ItemButton : MonoBehaviour
     [SerializeField] private InventoryItem _item;
     
     private InventoryItemMenu _itemMenu;
-    private AddChancePanel _addChancePanel;
+    private OpenCasePanel _addChancePanel;
 
     public static event Action<InventoryItem> ItemForMergeSelected;
     public static event Action<InventoryItem> ItemMenuOpened;
@@ -17,7 +17,7 @@ public class ItemButton : MonoBehaviour
     private void Start()
     {
         _itemMenu = FindObjectOfType<InventoryItemMenu>(true);
-        _addChancePanel = FindObjectOfType<AddChancePanel>(true);
+        _addChancePanel = FindObjectOfType<OpenCasePanel>(true);
     }
 
     private void OnEnable() => _button.onClick.AddListener(OpenItemMenu);

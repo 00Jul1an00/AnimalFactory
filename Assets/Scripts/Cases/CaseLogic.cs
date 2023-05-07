@@ -1,41 +1,53 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System;
 using System.Collections.Generic;
 
 public class CaseLogic : MonoBehaviour
 {
     [SerializeField] private Inventory _inventory;
     [SerializeField] private CaseSO _caseSO;
-    [SerializeField] private AddChancePanel _addChancePanel;
+    [SerializeField] AddDropChanceLogic _addDropChanceLogic;
+    [SerializeField] private Button _caseMenuOpenButton;
 
     private List<InventoryItem> _itemsToDelete = new();
-    private int _chanceImprove;
 
-    private void OnEnable() => ItemButton.ItemForChanceImproveSelected += ImproveDropChance;
+    public static event Action<CaseLogic> CaseMenuOpened;
 
-    private void OnDisable() => ItemButton.ItemForChanceImproveSelected += ImproveDropChance;
+    private void OnEnable()
+    {
+        _caseMenuOpenButton.onClick.AddListener(OnCaseMenuOpenButtonClick);
+    }
 
-    private void OpenCase()
+    private void OnDisable()
+    {
+        _caseMenuOpenButton.onClick.RemoveListener(OnCaseMenuOpenButtonClick);
+    }
+
+    public void OpenCase()
     {
         GiveRandReward();
+        _itemsToDelete = _addDropChanceLogic.GetSelectedItemsListCopy();
+
+        foreach (var item in _itemsToDelete)
+            _inventory.RemoveItemFromInventory(item);
+
+        _itemsToDelete.Clear();
+        _addDropChanceLogic.ResetChanceImprove();
     }
 
     private void GiveRandReward()
     {
-        AnimalQuality rewardQuality = CalcRewardQuality(Random.Range(0, 100) + _chanceImprove);
+        AnimalQuality rewardQuality = CalcRewardQuality(UnityEngine.Random.Range(0, 100) + _addDropChanceLogic.ChanceImprove);
         AnimalSO reward = AnimalsData.Instance.GetRandAnimalByQuality(rewardQuality);
         print(rewardQuality);
-        ResetChanceImprove();
-        //_inventory.AddAnimalToInventory(reward);
-    }
-
-    private void ImproveDropChance(InventoryItem item)
-    {
-        _chanceImprove += item.Animal.BaseAnimal.BaseQuality.Rarity;
-        _itemsToDelete.Add(item);
+        _inventory.AddAnimalToInventory(reward);
     }
 
     private AnimalQuality CalcRewardQuality(int value)
     {
+        print(value);
+
         if (value <= _caseSO.CommonDropChance)
         {
             return AnimalQuality.Common;
@@ -54,22 +66,8 @@ public class CaseLogic : MonoBehaviour
         }
     }
 
-    public void ResetChanceImprove()
+    private void OnCaseMenuOpenButtonClick()
     {
-        _chanceImprove = 0;
-        _itemsToDelete = new();
-    }
-
-    //debug
-    private bool _isClisked;
-    private void Update()
-    {
-        if (Input.GetKey(KeyCode.P) && !_isClisked)
-        {
-            _isClisked = true;
-
-            for (int i = 0; i < 100; i++)
-                OpenCase();
-        }
+        CaseMenuOpened?.Invoke(this);
     }
 }

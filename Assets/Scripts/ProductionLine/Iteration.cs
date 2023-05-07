@@ -49,7 +49,7 @@ public class Iteration : MonoBehaviour
 
     private void Start()
     {
-        SetStartAnimal(new AnimalLogic(AnimalsData.Instance.GetAnimalByID(1)));
+        SetStartAnimal(new AnimalLogic(AnimalsData.Instance.GetAnimalByID(-1)));
     }
 
     private IEnumerator WaitforProductionDelay()

@@ -16,6 +16,7 @@ public class InventoryItem : MonoBehaviour
     private AnimalLogic _animal;
 
     public AnimalLogic Animal => _animal;
+    public bool OutLineEnabled => _outLine.color.a > 0;
 
     private void Init()
     {

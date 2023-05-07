@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 56e96470bb71db44484d635cdbb7e4df, type: 3}
-  m_Name: AnimalSO 1
+  m_Name: DefaltCatWorker
   m_EditorClassIdentifier: 
-  _animalQuality: 1
-  _sprite: {fileID: 21300000, guid: 66fa19194577350438c952106f661c2f, type: 3}
-  _name: a
-  _id: 1
+  _animalQuality: 0
+  _sprite: {fileID: 21300000, guid: 0ac55f9f886d827408c102bdf33c5ff7, type: 3}
+  _name: Default
+  _id: -1

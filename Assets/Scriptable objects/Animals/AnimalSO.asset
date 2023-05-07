@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56e96470bb71db44484d635cdbb7e4df, type: 3}
   m_Name: AnimalSO
   m_EditorClassIdentifier: 
-  _animalQuality: 0
+  _animalQuality: 4
   _sprite: {fileID: 21300000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
   _name: b
   _id: 0

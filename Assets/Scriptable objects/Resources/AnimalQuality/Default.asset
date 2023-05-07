@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56e96470bb71db44484d635cdbb7e4df, type: 3}
-  m_Name: AnimalSO 1
+  m_Script: {fileID: 11500000, guid: 8f55652b788e74c49badc9dd1c83ba1d, type: 3}
+  m_Name: Default
   m_EditorClassIdentifier: 
-  _animalQuality: 1
-  _sprite: {fileID: 21300000, guid: 66fa19194577350438c952106f661c2f, type: 3}
-  _name: a
-  _id: 1
+  _rarity: 0
+  _mergePower: 0
+  _minSpeed: 0
+  _maxSpeed: 0
+  _minCost: 0
+  _maxCost: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private ItemsInInventoryObjectPool _inventoryObjectPool;
+    [SerializeField] private List<Iteration> _iterations;
 
     private List<InventoryItem> _inventory = new();
 
@@ -12,6 +13,10 @@ public class Inventory : MonoBehaviour
     {
         AddAnimalToInventory(AnimalsData.Instance.GetAnimalByID(0));
         AddAnimalToInventory(AnimalsData.Instance.GetAnimalByID(1));
+        AddAnimalToInventory(AnimalsData.Instance.GetAnimalByID(2));
+        AddAnimalToInventory(AnimalsData.Instance.GetAnimalByID(3));
+        AddAnimalToInventory(AnimalsData.Instance.GetAnimalByID(0));
+        AddAnimalToInventory(AnimalsData.Instance.GetAnimalByID(4));
     }
 
     public void AddAnimalToInventory(AnimalSO animal)
@@ -23,6 +28,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItemFromInventory(InventoryItem item)
     {
+        SetDefaultAnimalForIteration(item);
         _inventoryObjectPool.DeactivateItemInObjectPool(item);
         _inventory.Remove(item);
     }
@@ -52,6 +58,18 @@ public class Inventory : MonoBehaviour
 
             if (item == selectedItem)
                 _inventoryObjectPool.ActivateConcreateItem(item);
+        }
+    }
+
+    private void SetDefaultAnimalForIteration(InventoryItem item)
+    {
+        foreach (var iteration in _iterations)
+        {
+            if (iteration.CurrentAnimal == item.Animal)
+            {
+                var defaultAnimal = new AnimalLogic(AnimalsData.Instance.GetAnimalByID(-1));
+                iteration.ChangeAnimal(defaultAnimal);
+            }
         }
     }
 
