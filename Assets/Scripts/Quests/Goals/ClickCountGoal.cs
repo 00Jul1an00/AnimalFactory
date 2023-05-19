@@ -6,8 +6,8 @@ public class ClickCountGoal : QuestGoal
 {
     private ClickTracker _clickTracker;
 
-    private int _clickCount;
-    public override int CurrentProgres { get => _clickCount; protected set => _clickCount = value; }
+    private double _clickCount;
+    public override double CurrentProgres { get => _clickCount; protected set => _clickCount = value; }
     public override QuestGoalType GoalType => QuestGoalType.ClickCount;
 
     private void Start()

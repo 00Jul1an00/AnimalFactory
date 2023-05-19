@@ -2,21 +2,30 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
+using TMPro;
 
-public class CaseLogic : MonoBehaviour
+public class CaseLogic : MonoBehaviour, IReward
 {
     [SerializeField] private Inventory _inventory;
     [SerializeField] private CaseSO _caseSO;
     [SerializeField] AddDropChanceLogic _addDropChanceLogic;
     [SerializeField] private Button _caseMenuOpenButton;
+    [SerializeField] private TMP_Text _keysQuantityText;
+    [SerializeField] private OpenCasePanel _openCasePanel;
 
+    private int _keysQuantity;
     private List<InventoryItem> _itemsToDelete = new();
 
+    public QuestReward Reward => QuestReward.Case;
+
     public static event Action<CaseLogic> CaseMenuOpened;
+
+    public CaseSO CaseSO => _caseSO;
 
     private void OnEnable()
     {
         _caseMenuOpenButton.onClick.AddListener(OnCaseMenuOpenButtonClick);
+        _keysQuantityText.text = _keysQuantity.ToString();
     }
 
     private void OnDisable()
@@ -26,6 +35,11 @@ public class CaseLogic : MonoBehaviour
 
     public void OpenCase()
     {
+        if (_keysQuantity == 0)
+            return;
+
+        _keysQuantity--;
+        _keysQuantityText.text = _keysQuantity.ToString();
         GiveRandReward();
         _itemsToDelete = _addDropChanceLogic.GetSelectedItemsListCopy();
 
@@ -68,6 +82,19 @@ public class CaseLogic : MonoBehaviour
 
     private void OnCaseMenuOpenButtonClick()
     {
+        if (_keysQuantity == 0)
+            return;
+
+        _openCasePanel.gameObject.SetActive(true);
         CaseMenuOpened?.Invoke(this);
+    }
+
+    public void GiveQuestReward(int rewardValue)
+    {
+        if (rewardValue == _caseSO.ID)
+        {
+            _keysQuantity++;
+            _keysQuantityText.text = _keysQuantity.ToString();
+        }
     }
 }

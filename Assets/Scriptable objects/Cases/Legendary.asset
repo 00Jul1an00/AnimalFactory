@@ -15,3 +15,4 @@ MonoBehaviour:
   _commonDropChance: 0
   _rareDropChance: 20
   _mythicalDropChance: 40
+  _id: 2

@@ -5,13 +5,13 @@ using UnityEngine;
 [RequireComponent(typeof(Quest))]
 public abstract class QuestGoal : MonoBehaviour
 {
-    [SerializeField] private int _requireProgres;
+    [SerializeField] private double _requireProgres;
     
-    private int _currentProgres;
+    private double _currentProgres;
 
     public abstract QuestGoalType GoalType { get; }
 
-    public virtual int CurrentProgres { get { return _currentProgres; } protected set { _currentProgres = value; } }
-    public virtual int RequireProgres { get { return _requireProgres; } protected set { _requireProgres = value; } }
+    public virtual double CurrentProgres { get { return _currentProgres; } protected set { _currentProgres = value; } }
+    public virtual double RequireProgres { get { return _requireProgres; } protected set { _requireProgres = value; } }
     public bool IsDone { get { return CurrentProgres >= RequireProgres; } protected set { IsDone = value; } }
 }

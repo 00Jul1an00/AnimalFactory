@@ -5,31 +5,12 @@ using UnityEngine;
 
 public class DollarsLogic : CurrencyLogic, IReward
 {
-    [SerializeField] private TextMeshProUGUI _dollarText;
+    public override QuestReward Reward => QuestReward.Dollars;
 
-    private int _dollarsValue = 100;
-    public override int CurrencyCount { get { return _dollarsValue; } 
-        set 
-        { 
-            if (_dollarsValue >= 0)
-            {
-                _dollarsValue = value;
-                GameEvents.Instance.MoneyChanged();
-            }
-        } 
-    }
+    public void GiveQuestReward(int rewardValue) => CurrencyCount += rewardValue;
 
-    public QuestReward Reward { get { return QuestReward.Dollars; } }
-
-    public void GiveReward(int rewardValue)
+    private void Start()
     {
-        CurrencyCount += rewardValue;
+        DrawMoney();
     }
-
-    protected override void DrawMoney() => _dollarText.text = _dollarsValue.ToString() + "$";
-
-    private void OnEnable() => GameEvents.Instance.OnMoneyChanged += DrawMoney;
-    private void OnDisable() => GameEvents.Instance.OnMoneyChanged -= DrawMoney;
-
-    private void Start() => DrawMoney();
 }

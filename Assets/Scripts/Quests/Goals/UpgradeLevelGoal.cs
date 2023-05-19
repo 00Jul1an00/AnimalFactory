@@ -9,7 +9,7 @@ public class UpgradeLevelGoal : QuestGoal
 
     public override QuestGoalType GoalType => QuestGoalType.UpgradeLevel;
 
-    public override int CurrentProgres
+    public override double CurrentProgres
     {
         get
         {

@@ -33,6 +33,7 @@ public class QuestSystem : MonoBehaviour
     {
         _possibleRewards.Add(FindObjectOfType<DollarsLogic>());
         _possibleRewards.Add(FindObjectOfType<DiamondsLogic>());
+        _possibleRewards.AddRange(FindObjectsOfType<CaseLogic>(true));
         PossibleRewards = new(_possibleRewards);
         _upgradesToCheck = FindObjectsOfType<BaseUpgrade>();
         UpgradesToCheck = new(_upgradesToCheck);

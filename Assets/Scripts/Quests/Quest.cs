@@ -70,7 +70,18 @@ public class Quest : MonoBehaviour
 
     private void ValidateReward()
     {
-        QuestRewardType = QuestSystem.Instance.PossibleRewards.Where(r => r.Reward == _questRewardType).First();
+        if(_questRewardType == QuestReward.Case)
+        {
+            var caseToSelect = QuestSystem.Instance.PossibleRewards.Where(r => r.Reward == QuestReward.Case)
+                .Select(c => c as CaseLogic)
+                .First(c => c.CaseSO.ID == _rewardValue);
+
+            QuestRewardType = caseToSelect as IReward;
+        }
+        else
+        {
+            QuestRewardType = QuestSystem.Instance.PossibleRewards.Where(r => r.Reward == _questRewardType).First();
+        }
     }
 
     private void Start()
@@ -85,7 +96,7 @@ public class Quest : MonoBehaviour
         {
             print("Quest Complete");
             QuestComplete?.Invoke();
-            QuestRewardType.GiveReward(_rewardValue);
+            QuestRewardType.GiveQuestReward(_rewardValue);
             gameObject.SetActive(false);
         }
     }
