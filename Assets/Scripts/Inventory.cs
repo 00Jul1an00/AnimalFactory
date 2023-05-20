@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +16,15 @@ public class Inventory : MonoBehaviour
         AddAnimalToInventory(AnimalsData.Instance.GetAnimalByID(3));
         AddAnimalToInventory(AnimalsData.Instance.GetAnimalByID(0));
         AddAnimalToInventory(AnimalsData.Instance.GetAnimalByID(4));
+
+        var inventory = SaveLoadSystem.Instance.LoadPlayerInventory();
+
+        if(inventory != null)
+            _inventory = inventory;
+
+        //until SaveLoadSytem test
+        //
+        //LoadInventory();
     }
 
     public void AddAnimalToInventory(AnimalSO animal)
@@ -24,13 +32,15 @@ public class Inventory : MonoBehaviour
         var animalLogic = new AnimalLogic(animal);
         var item = ActivateItem(animalLogic);
         _inventory.Add(item);
+        SaveLoadSystem.Instance.SavePlayerInventory(_inventory);
     }
 
     public void RemoveItemFromInventory(InventoryItem item)
     {
-        SetDefaultAnimalForIteration(item);
+        TrySetDefaultAnimalForIteration(item);
         _inventoryObjectPool.DeactivateItemInObjectPool(item);
         _inventory.Remove(item);
+        SaveLoadSystem.Instance.SavePlayerInventory(_inventory);
     }
 
     private InventoryItem ActivateItem(AnimalLogic animalLogic)
@@ -61,7 +71,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    private void SetDefaultAnimalForIteration(InventoryItem item)
+    private void TrySetDefaultAnimalForIteration(InventoryItem item)
     {
         foreach (var iteration in _iterations)
         {
@@ -78,6 +88,4 @@ public class Inventory : MonoBehaviour
         foreach (var item in _inventory)
             ActivateItem(item.Animal);
     }
-
-    private void SaveInventory() { }
 }

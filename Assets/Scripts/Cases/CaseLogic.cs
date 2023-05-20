@@ -33,6 +33,11 @@ public class CaseLogic : MonoBehaviour, IReward
         _caseMenuOpenButton.onClick.RemoveListener(OnCaseMenuOpenButtonClick);
     }
 
+    private void Start()
+    {
+        _keysQuantity = SaveLoadSystem.Instance.LoadKeysCountForCase(this);
+    }
+
     public void OpenCase()
     {
         if (_keysQuantity == 0)
@@ -94,6 +99,7 @@ public class CaseLogic : MonoBehaviour, IReward
         if (rewardValue == _caseSO.ID)
         {
             _keysQuantity++;
+            SaveLoadSystem.Instance.SaveKeysCountForCase(this, _keysQuantity);
             _keysQuantityText.text = _keysQuantity.ToString();
         }
     }

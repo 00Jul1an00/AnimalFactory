@@ -18,15 +18,15 @@ public class QuestSystem : MonoBehaviour
     {
         if (Instance == null)
         {
+            transform.parent = null;
             Instance = this;
+            DontDestroyOnLoad(gameObject);
             Init();
         }
         else if (Instance == this)
         {
             Destroy(gameObject);
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Init()

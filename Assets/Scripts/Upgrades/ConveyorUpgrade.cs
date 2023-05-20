@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ConveyorBelt))]
@@ -11,11 +9,14 @@ public class ConveyorUpgrade : BaseUpgrade
 
     private void Start()
     {
-        _conveyorBelt = GetComponent<ConveyorBelt>();    
+        _conveyorBelt = GetComponent<ConveyorBelt>();
+        _speedUpMultiply = _upgradeStats.SpecificMyltiply;
+
     }
 
     protected override void UpgradeLogic()
     {
         _conveyorBelt.SetSpeedMultiply(_speedUpMultiply);
+        _upgradeStats.SpecificMyltiply = _speedUpMultiply;
     }
 }

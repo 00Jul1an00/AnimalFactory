@@ -10,6 +10,18 @@ public class ClickTracker : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         ClickCount++;
+        SaveLoadSystem.Instance.SaveClicksCount(ClickCount);
         Clicked?.Invoke();
+    }
+
+    private void Awake()
+    {
+        transform.parent = null;
+        DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        ClickCount = SaveLoadSystem.Instance.LoadClicksCount();
     }
 }

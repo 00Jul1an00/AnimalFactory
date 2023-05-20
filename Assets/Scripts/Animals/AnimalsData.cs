@@ -14,14 +14,14 @@ public class AnimalsData : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            transform.parent = null;
+            DontDestroyOnLoad(gameObject);
             _baseAnimals = _baseAnimals.OrderBy(x => x.ID).ToList();
         }
         else
         {
             Destroy(gameObject);
         }
-
-        DontDestroyOnLoad(gameObject);
     }
 
     public AnimalSO GetAnimalByID(int id)

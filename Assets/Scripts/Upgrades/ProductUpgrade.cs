@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ProductUpgrade : BaseUpgrade
 {
     [Min(1)]
-    [SerializeField] private float _costMultiply;
+    [SerializeField] private float _productCostMultiply;
 
     private List<Product> _products;
 
@@ -18,6 +17,8 @@ public class ProductUpgrade : BaseUpgrade
     protected override void UpgradeLogic()
     {
         foreach(Product product in _products)
-            product.Cost = Mathf.CeilToInt(product.Cost * _costMultiply);
+            product.Cost = Mathf.CeilToInt(product.Cost * _productCostMultiply);
+
+        _upgradeStats.SpecificMyltiply = _productCostMultiply; 
     }
 }

@@ -5,19 +5,20 @@ public abstract class CurrencyLogic : MonoBehaviour
 {
     [SerializeField] protected TMP_Text _curencyText;
 
-    protected double _curencyCount;
+    protected double _currencyCount;
     public double CurrencyCount 
     { 
         get 
         { 
-            return _curencyCount; 
+            return _currencyCount; 
         } 
         set 
         { 
-            if(_curencyCount >= 0)
+            if(_currencyCount >= 0)
             {
-                _curencyCount = value;
+                _currencyCount = value;               
                 DrawMoney();
+                SaveCurrency();
             } 
         } 
     }
@@ -28,4 +29,6 @@ public abstract class CurrencyLogic : MonoBehaviour
     {
         _curencyText.text = NumsFormatHelper.FormatNum(CurrencyCount);
     }
+
+    protected abstract void SaveCurrency();
 }

@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class Iteration : MonoBehaviour
 {
@@ -32,10 +30,8 @@ public class Iteration : MonoBehaviour
     {
         _currentAnimal.SpeedChanged -= OnSpeedChanged;
         _productionDelay += _currentAnimal.Speed;
-        _currentAnimal = animal;
-        _productionDelay -= _currentAnimal.Speed;
-        _currentAnimal.SpeedChanged += OnSpeedChanged;
-        RedrawSprite();
+        SetStartAnimal(animal);
+        SaveLoadSystem.Instance.SaveIterationCurrentAnimal(this);
     }
 
     private void SetStartAnimal(AnimalLogic animal)
@@ -50,6 +46,9 @@ public class Iteration : MonoBehaviour
     private void Start()
     {
         SetStartAnimal(new AnimalLogic(AnimalsData.Instance.GetAnimalByID(-1)));
+        //until SaveLoadTest
+        //
+        //SetStartAnimal(SaveLoadSystem.Instance.LoadIterationCurrentAnimal(this));
     }
 
     private IEnumerator WaitforProductionDelay()

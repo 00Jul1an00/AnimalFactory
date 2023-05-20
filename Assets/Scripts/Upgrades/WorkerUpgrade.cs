@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
 
@@ -20,5 +18,6 @@ public class WorkerUpgrade : BaseUpgrade
     {
         _worker.ProductionDelay /= _upgradeSpeedMultiply;
         WorkerUpgraded?.Invoke();
+        _upgradeStats.SpecificMyltiply = _upgradeSpeedMultiply;
     }
 }

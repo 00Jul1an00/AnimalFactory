@@ -50,13 +50,13 @@ public class UpgradeMenu : MonoBehaviour
         {
             _allUpgradesButtons[i].onClick.AddListener(_allUpgrades[i].Upgrade);
             _allUpgrades[i].Upgraded += OnUpgraded;
-            _pricesText[i].text = _allUpgrades[i].UpgradeCost.ToString();
+            PriceTextUpdate(i);
         }
     }
 
     private void PriceTextUpdate(int index)
     {
-        _pricesText[index].text = _allUpgrades[index].UpgradeCost.ToString();
+        _pricesText[index].text = NumsFormatHelper.FormatNum(_allUpgrades[index].UpgradeCost);
     }
 
     private void OnUpgraded(BaseUpgrade upgrade)
