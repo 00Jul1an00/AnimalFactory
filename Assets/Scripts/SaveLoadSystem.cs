@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class ProgressData
 {
     public float PlayerMoneyCurrentMultiplyer;
@@ -25,7 +26,7 @@ public struct UpgradeStats
 public class SaveLoadSystem : MonoBehaviour
 {
     public static SaveLoadSystem Instance { get; private set; }
-    private ProgressData _progressData;
+    [SerializeField] private ProgressData _progressData;
 
     private void Awake()
     {

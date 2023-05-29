@@ -23,19 +23,10 @@ public class AnimalQualitySO : ScriptableObject
     [SerializeField] private float _minCost;
     [SerializeField] private float _maxCost;
 
-    public float Speed { get; private set; }
-    public float Cost { get; private set; }
     public float MergePower => _mergePower;
     public int Rarity => _rarity;
     public float MaxSpeed => _maxSpeed;
+    public float MinSpeed => _minSpeed;
     public float MaxCost => _maxCost;
-
-
-    public void CalcStats()
-    {
-        Speed = Round(Random.Range(_minSpeed, _maxSpeed));
-        Cost = Round(Random.Range(_minCost, _maxCost));
-    }
-
-    private float Round(float f) => Mathf.Round(f * 100f) * 0.01f;
+    public float MinCost => _minCost;
 }

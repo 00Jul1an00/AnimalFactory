@@ -18,9 +18,7 @@ public class AnimalLogic
     public AnimalLogic(AnimalSO baseAnimal)
     {
         _baseAnimal = baseAnimal;
-        _baseAnimal.BaseQuality.CalcStats();
-        _cost = _baseAnimal.BaseQuality.Cost;
-        _speed = _baseAnimal.BaseQuality.Speed;
+        CalcStats();
     }
 
     public void MergeAnimals(AnimalQualitySO animal)
@@ -49,4 +47,12 @@ public class AnimalLogic
             _cost = _baseAnimal.BaseQuality.MaxCost;
 
     }
+
+    private void CalcStats()
+    {
+        _speed = Round(UnityEngine.Random.Range(_baseAnimal.BaseQuality.MinSpeed, _baseAnimal.BaseQuality.MaxSpeed));
+        _cost = Round(UnityEngine.Random.Range(_baseAnimal.BaseQuality.MinCost, _baseAnimal.BaseQuality.MaxCost));
+    }
+
+    private float Round(float f) => Mathf.Round(f * 100f) * 0.01f;
 }

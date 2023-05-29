@@ -38,6 +38,8 @@ public class Quest : MonoBehaviour
 
     private void ValidateGoal()
     {
+#if UNITY_EDITOR
+
         QuestGoal = GetComponent<QuestGoal>();
            
         if (QuestGoal != null && _questGoal == QuestGoal.GoalType)
@@ -50,6 +52,7 @@ public class Quest : MonoBehaviour
             {
                 DestroyImmediate(QuestGoal);
             };
+            
         }
 
         switch (_questGoal)
@@ -64,6 +67,8 @@ public class Quest : MonoBehaviour
                 gameObject.AddComponent<MoneyCountGoal>();
                 return;
         }
+
+#endif
     }
 
     private void ValidateReward()
