@@ -6,7 +6,7 @@ public abstract class CurrencyLogic : MonoBehaviour
     [SerializeField] protected TMP_Text _curencyText;
 
     protected double _currencyCount;
-    public double CurrencyCount 
+    public virtual double CurrencyCount 
     { 
         get 
         { 

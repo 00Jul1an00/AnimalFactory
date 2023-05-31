@@ -26,7 +26,9 @@ public class AnimalQualitySO : ScriptableObject
     public float MergePower => _mergePower;
     public int Rarity => _rarity;
     public float MaxSpeed => _maxSpeed;
-    public float MinSpeed => _minSpeed;
     public float MaxCost => _maxCost;
-    public float MinCost => _minCost;
+
+    public float CalcSpeed() => Round(Random.Range(_minSpeed, _maxSpeed));
+    public float CalcCost() => Round(Random.Range(_minCost, _maxCost));
+    private float Round(float f) => Mathf.Round(f * 100f) * 0.01f;
 }

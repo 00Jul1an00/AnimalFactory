@@ -2,7 +2,7 @@ public class DiamondsLogic : CurrencyLogic, IReward
 {
     public override QuestReward Reward => QuestReward.Diamonds;
 
-    public void GiveQuestReward(int rewardValue) => _currencyCount += rewardValue;
+    public void GiveQuestReward(int rewardValue) => CurrencyCount += rewardValue;
 
     protected override void SaveCurrency() => SaveLoadSystem.Instance.SaveDiamonds(_currencyCount);
 

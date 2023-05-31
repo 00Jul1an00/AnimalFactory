@@ -13,7 +13,7 @@ public abstract class BaseUpgrade : MonoBehaviour
 
     protected UpgradeStats _upgradeStats;
 
-    private void Start()
+    protected void Init()
     {
         _upgradeStats = SaveLoadSystem.Instance.LoadUpgradeStats(this);
 
@@ -21,7 +21,14 @@ public abstract class BaseUpgrade : MonoBehaviour
         {
             _upgradeCost = _upgradeStats.CurrentUpgradeCost;
             _upgradeCostMiltiply = _upgradeStats.UpgradeCostMyltiply;
-        }   
+            UpgradesCount = _upgradeStats.UpgradesCount;
+        }
+        
+        for (int i = 0; i < UpgradesCount; i++)
+        {
+            UpgradeLogic();
+            ChangeUpgradeCost();
+        }
     }
     public virtual void Upgrade()
     {
@@ -35,6 +42,7 @@ public abstract class BaseUpgrade : MonoBehaviour
         ChangeUpgradeCost();
         UpgradesCount++;
         UpgradeLogic();
+        _upgradeStats.UpgradesCount = UpgradesCount;
         SaveLoadSystem.Instance.SaveUpgradeStats(this, _upgradeStats);
         Upgraded?.Invoke(this);
     }

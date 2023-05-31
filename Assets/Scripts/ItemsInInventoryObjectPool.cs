@@ -20,7 +20,7 @@ public class ItemsInInventoryObjectPool : MonoBehaviour
     public InventoryItem ActivateItemInObjectPool(AnimalLogic animalLogic)
     {
         _pool.ActivateObject();
-        var item = _pool.GetLastSpawnedObject();
+        var item = _pool.GetLastActivatedObject();
         item.InitItem(animalLogic);
         return item;
     }

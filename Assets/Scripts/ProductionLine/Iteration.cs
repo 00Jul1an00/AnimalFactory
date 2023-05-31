@@ -68,7 +68,7 @@ public class Iteration : MonoBehaviour
         if (collision.attachedRigidbody.TryGetComponent(out Product product))
         {
             _currentProductOnIteration = product;
-            product.Cost += Mathf.RoundToInt(_currentAnimal.Cost);
+            product.IncreseProductCost(Mathf.RoundToInt(_currentAnimal.Cost));
             StartCoroutine(WaitforProductionDelay());
             StartCoroutine(_timer.TimerAnimation());
         }

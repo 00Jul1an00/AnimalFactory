@@ -8,6 +8,12 @@ public class ProductUpgrade : BaseUpgrade
 
     private List<Product> _products;
 
+    private void Start()
+    {
+        Init();
+        //_productCostMultiply = _upgradeStats.SpecificMyltiply;
+    }
+
     public void FillProductList(List<Product> products)
     {
         if(products != null)
@@ -16,8 +22,8 @@ public class ProductUpgrade : BaseUpgrade
 
     protected override void UpgradeLogic()
     {
-        foreach(Product product in _products)
-            product.Cost = Mathf.CeilToInt(product.Cost * _productCostMultiply);
+        foreach (Product product in _products)
+            product.ChangeProductCost(Mathf.CeilToInt(product.Cost * _productCostMultiply));
 
         _upgradeStats.SpecificMyltiply = _productCostMultiply; 
     }

@@ -16,3 +16,4 @@ MonoBehaviour:
   _sprite: {fileID: 0}
   _name: d
   _id: 3
+  _quality: {fileID: 11400000, guid: 4bbb89720f6eabf42836e585b70c8ce1, type: 2}

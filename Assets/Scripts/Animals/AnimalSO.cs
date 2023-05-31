@@ -11,8 +11,7 @@ public class AnimalSO : ScriptableObject
     [SerializeField] private Sprite _sprite;
     [SerializeField] private string _name;
     [SerializeField] private int _id;
-
-    private AnimalQualitySO _quality;
+    [SerializeField] private AnimalQualitySO _quality;
 
     public AnimalQualitySO BaseQuality => _quality;
     public AnimalQuality Quility => _animalQuality;
@@ -20,9 +19,11 @@ public class AnimalSO : ScriptableObject
     public int ID => _id;
     public string Name => _name;
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
         string path = _animalQuality.ToString();
         _quality = Resources.Load<AnimalQualitySO>("AnimalQuality/" + path);
     }
+#endif
 }

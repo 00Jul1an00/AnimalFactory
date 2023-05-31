@@ -77,13 +77,13 @@ public class ObjectPool<T> where T : MonoBehaviour
 
     public T GetObjectFromPool(int index)
     {
-        if (index <= -1 || index > _spawnedList.Capacity)
+        if (index <= -1 || index >= _spawnedList.Count - 1)
             throw new Exception("List doesnt have Object at this index");
 
         return _spawnedList[index];
     }
 
-    public T GetLastSpawnedObject()
+    public T GetLastActivatedObject()
     {
         if (LastActiveIndex == 0)
             return _spawnedList[_spawnCount - 1];
@@ -95,19 +95,21 @@ public class ObjectPool<T> where T : MonoBehaviour
     {
         _spawnCount *= 2;
 
-        for(int i = _spawnedList.Count; i < _spawnCount; i++)
+        for(int i = _spawnedList.Capacity; i < _spawnCount; i++)
             SpawnObject();
     }
 
-    public int GetObjectIndex(MonoBehaviour obj)
+    public int GetObjectIndex(T obj)
     {
-        for (int i = 0; i < _spawnedList.Count; i++)
-        {
-            if (_spawnedList[i].Equals(obj))
-                return i;
-        }
+        //for (int i = 0; i < _spawnedList.Count - 1; i++)
+        //{
+        //    if (_spawnedList[i].Equals(obj))
+        //        return i;
+        //}
 
-        return -1;
+        //return -1;
+
+        return _spawnedList.IndexOf(obj);
     }
 
     public void ClearPool()

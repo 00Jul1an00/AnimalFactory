@@ -11,7 +11,7 @@ public abstract class QuestGoal : MonoBehaviour
 
     public virtual double CurrentProgres { get { return _currentProgres; } protected set { _currentProgres = value; } }
     public virtual double RequireProgres { get { return _requireProgres; } protected set { _requireProgres = value; } }
-    public bool IsDone { get { return CurrentProgres >= RequireProgres; } protected set { IsDone = value; } }
+    public bool IsDone { get { SaveLoadSystem.Instance.SaveQuestProgress(this); return CurrentProgres >= RequireProgres; } protected set { IsDone = value; } }
 
     private void Start()
     {

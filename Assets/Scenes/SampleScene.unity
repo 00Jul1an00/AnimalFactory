@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _productPrefab: {fileID: -1604093385589957806, guid: 474f915d27fbf73419e9cd276d4bb70e, type: 3}
-  _poolCapacity: 50
+  _poolCapacity: 100
   _productUpgrade: {fileID: 8613397}
 --- !u!114 &8613397
 MonoBehaviour:
@@ -1657,15 +1657,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 997657645368425249, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_Size.x
-      value: 17.739273
+      value: 14.957209
       objectReference: {fileID: 0}
     - target: {fileID: 997657645368425249, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_Size.y
-      value: 0.19467264
+      value: 0.19467258
       objectReference: {fileID: 0}
     - target: {fileID: 997657645368425249, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_Offset.x
-      value: 1.6179771
+      value: 0.22694492
       objectReference: {fileID: 0}
     - target: {fileID: 997657645368425249, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_Offset.y
@@ -1673,7 +1673,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2174888896804595645, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_Size.x
-      value: 17.80122
+      value: 15.024026
       objectReference: {fileID: 0}
     - target: {fileID: 2174888896804595645, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_Size.y
@@ -1681,7 +1681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2174888896804595645, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_Offset.x
-      value: 1.5939202
+      value: 0.20532274
       objectReference: {fileID: 0}
     - target: {fileID: 2174888896804595645, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_Offset.y
@@ -1737,7 +1737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8353087786214842397, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.0020967
+      value: 1.1698333
       objectReference: {fileID: 0}
     - target: {fileID: 8353087786214842397, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_LocalScale.y
@@ -1745,7 +1745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8353087786214842397, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.5967
+      value: -2.3687
       objectReference: {fileID: 0}
     - target: {fileID: 8353087786214842397, guid: 6b14705709ff6d14fbc84a836f2e4c14, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4767,12 +4767,12 @@ GameObject:
   - component: {fileID: 667804669}
   - component: {fileID: 667804670}
   m_Layer: 0
-  m_Name: QuestTest (3)
+  m_Name: Quest (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &667804667
 Transform:
   m_ObjectHideFlags: 0
@@ -5187,6 +5187,10 @@ PrefabInstance:
     - target: {fileID: 1651805265464390364, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
       propertyPath: m_Name
       value: Iteration (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4164484228368282784, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 7883878421216067734, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
       propertyPath: m_RootOrder
@@ -5627,12 +5631,12 @@ GameObject:
   - component: {fileID: 879982331}
   - component: {fileID: 879982332}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Quest (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &879982329
 Transform:
   m_ObjectHideFlags: 0
@@ -7203,12 +7207,12 @@ GameObject:
   - component: {fileID: 1073113866}
   - component: {fileID: 1073113865}
   m_Layer: 0
-  m_Name: QuestTest (1)
+  m_Name: Quest (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1073113865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7915,6 +7919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Iteration (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4164484228368282784, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7883878421216067734, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -8460,12 +8468,12 @@ GameObject:
   - component: {fileID: 1257286948}
   - component: {fileID: 1257286949}
   m_Layer: 0
-  m_Name: QuestTest (4)
+  m_Name: Quest (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1257286946
 Transform:
   m_ObjectHideFlags: 0
@@ -10300,12 +10308,12 @@ GameObject:
   - component: {fileID: 1503019475}
   - component: {fileID: 1503019476}
   m_Layer: 0
-  m_Name: QuestTest (2)
+  m_Name: Quest (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1503019473
 Transform:
   m_ObjectHideFlags: 0
@@ -10546,6 +10554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50f4c5efd075df74a932a8e7d81a9985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _so: {fileID: 11400000, guid: 23773dc7798bdae44b22b26d3684d533, type: 2}
 --- !u!1 &1550317679
 GameObject:
   m_ObjectHideFlags: 0
@@ -12107,6 +12116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Iteration
       objectReference: {fileID: 0}
+    - target: {fileID: 4164484228368282784, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 7883878421216067734, guid: 1b948ba6d9bef384aade5420f51fd698, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -12688,12 +12701,12 @@ GameObject:
   - component: {fileID: 1886798056}
   - component: {fileID: 1886798057}
   m_Layer: 0
-  m_Name: QuestTest
+  m_Name: Quest (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1886798054
 Transform:
   m_ObjectHideFlags: 0
@@ -13299,6 +13312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _curencyText: {fileID: 1931161593}
+  _playerMoneyMultiplayer: 0
 --- !u!1 &1940572040
 GameObject:
   m_ObjectHideFlags: 0

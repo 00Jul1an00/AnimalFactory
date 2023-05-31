@@ -4,12 +4,11 @@ using System;
 public class Product : MonoBehaviour
 {
     [SerializeField] private float _maxDistance;
-    [SerializeField] private int _cost;
-    [HideInInspector] public Product PreviusProductOnBelt;
-    [HideInInspector] public Product NextProductOnBelt;
+    public Product NextProductOnBelt;
 
     public float SpeedOnBelt { get; private set; }
-    public int Cost { get { return _cost; } set { if (value > 0) _cost = value; } }
+    public int Cost { get; private set; }
+    public int CostFromIteration { get; private set; }
 
     private bool _isStoped = false;
     private Rigidbody2D _rb;
@@ -17,13 +16,22 @@ public class Product : MonoBehaviour
 
     private void Start()
     {
-        if(_cost < 1)
-            _cost = 1;
-
         SpeedOnBelt = 1;
         _rb = GetComponent<Rigidbody2D>();
         
-    } 
+    }
+
+    private void OnEnable()
+    {
+        if (Cost < 1)
+            Cost = 1;
+    }
+
+    private void OnDisable()
+    {
+        Cost -= CostFromIteration;
+        CostFromIteration = 0;
+    }
 
     private void Update()
     {
@@ -38,17 +46,35 @@ public class Product : MonoBehaviour
 
     private bool CheckDistance()
     {
-        if (PreviusProductOnBelt == null)
+        if (NextProductOnBelt == null)
             return false;
 
-        float Distance = Vector2.Distance(transform.position, PreviusProductOnBelt.transform.position);
+        float Distance = Vector2.Distance(transform.position, NextProductOnBelt.transform.position);
         return Distance <= _maxDistance;
+    }
+
+    public void ChangeProductCost(int value)
+    {
+        if (value < 0)
+            return;
+
+        Cost = value - CostFromIteration;
+    }
+    
+    public void IncreseProductCost(int value)
+    {
+        if (value < 0)
+            return;
+
+        Cost += value;
+        CostFromIteration += value;
     }
 
     public void StopProductOnBelt()
     {
         SpeedOnBelt = 0;
         _isStoped = true;
+        _rb.Sleep();
     }
     public void MoveProductOnBelt() 
     { 

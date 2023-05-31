@@ -27,7 +27,7 @@ public class Quest : MonoBehaviour
 
     public IReward QuestRewardType { get; private set; }
     public QuestGoal QuestGoal { get; private set; }
-    public int QuestId { get; private set; }
+    public int QuestId { get; set; }
 
     public event Action QuestComplete;
 
@@ -100,6 +100,7 @@ public class Quest : MonoBehaviour
             print("Quest Complete");
             QuestComplete?.Invoke();
             QuestRewardType.GiveQuestReward(_rewardValue);
+            QuestSystem.Instance.ActivateNextQuest();
             gameObject.SetActive(false);
         }
     }

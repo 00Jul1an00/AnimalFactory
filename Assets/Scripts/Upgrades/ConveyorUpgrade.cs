@@ -10,8 +10,8 @@ public class ConveyorUpgrade : BaseUpgrade
     private void Start()
     {
         _conveyorBelt = GetComponent<ConveyorBelt>();
-        _speedUpMultiply = _upgradeStats.SpecificMyltiply;
-
+        Init();
+        //_speedUpMultiply = _upgradeStats.SpecificMyltiply;
     }
 
     protected override void UpgradeLogic()

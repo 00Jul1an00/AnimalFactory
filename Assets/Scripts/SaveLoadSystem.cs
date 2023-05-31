@@ -21,6 +21,7 @@ public struct UpgradeStats
     public int CurrentUpgradeCost;
     public float UpgradeCostMyltiply;
     public float SpecificMyltiply;
+    public int UpgradesCount;
 }
 
 public class SaveLoadSystem : MonoBehaviour
@@ -101,14 +102,15 @@ public class SaveLoadSystem : MonoBehaviour
         return _progressData.ClicksCount;
     }
 
+    public void RemoveQuestFromSaveList(QuestGoal quest)
+    {
+        if (_progressData.QuestsProgress.ContainsKey(quest))
+            _progressData.QuestsProgress.Remove(quest);
+    }
+
     public void SaveQuestProgress(QuestGoal quest)
     {
-        if(quest.IsDone)
-        {
-            _progressData.QuestsProgress.Remove(quest);
-            return;
-        }
-        else if(!_progressData.QuestsProgress.TryAdd(quest, quest.CurrentProgres))
+        if(!_progressData.QuestsProgress.TryAdd(quest, quest.CurrentProgres))
         {
             _progressData.QuestsProgress[quest] = quest.CurrentProgres;
         }

@@ -12,6 +12,8 @@ public class WorkerUpgrade : BaseUpgrade
     private void Start()
     {
         _worker = GetComponent<Iteration>();
+        Init();
+        //_upgradeSpeedMultiply = _upgradeStats.SpecificMyltiply;
     }
 
     protected override void UpgradeLogic()

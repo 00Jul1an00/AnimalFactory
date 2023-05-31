@@ -24,20 +24,19 @@ public class Timer : MonoBehaviour
     public IEnumerator TimerAnimation()
     {
         float t = 0;
-        float normalizeValue = CalcNormolizeValue(AnimationDuration);
+        float normalizeValue = CalcNormalizeValue(AnimationDuration);
 
         for (int i = 0; i < DURATION_SPLITING; i++)
-        {
-            
+        {   
             t += normalizeValue;
             UpdateValueOnTimer(t);
-            yield return new WaitForSeconds(AnimationDuration / DURATION_SPLITING);
+            yield return new WaitForSeconds(AnimationDuration / DURATION_SPLITING); 
         }
 
         UpdateValueOnTimer(0);
     }
 
-    private float CalcNormolizeValue(float value)
+    private float CalcNormalizeValue(float value)
     {
         float min = value / DURATION_SPLITING;
         float max = value;
